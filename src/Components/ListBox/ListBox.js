@@ -6,16 +6,16 @@ const ListBox = ({ lists, filteredLists, chooseCategory }) => {
   
   const makeLinks = (listType) => listType.map(category => {
     return  <article className='categorySelection'>
-              <div className='category'>
-                <Link 
-                  to={`preview/${category.list_name_encoded}`}
-                  className='categoryLink'
-                  key={category.list_name_encoded}
-                  onClick={() => chooseCategory(category.list_name_encoded)}>
-                    {category.display_name}
-                </Link>
-              </div>
-              <button className='categoryButton'>Select</button>
+              <Link 
+                to={`preview/${category.list_name_encoded}`}
+                className='category'
+                key={category.list_name_encoded}
+                onClick={() => chooseCategory(category.list_name_encoded)}>
+                  {category.display_name}
+              </Link>
+              <button className='categoryButton'>
+                Select
+              </button>
             </article>
   })
   
