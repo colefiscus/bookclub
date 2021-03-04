@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookPreview from '../../Components/BookPreview/BookPreview';
 import getData from '../../util';
 import './Preview.css';
 
@@ -17,7 +18,7 @@ class Preview extends Component {
 
   render() {
     return (
-      <h1>Let's do ittttttt.</h1>
+      <BookPreview bestSellers={this.state.bestSellers} />
     )
   }
 }
