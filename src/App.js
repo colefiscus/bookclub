@@ -45,8 +45,15 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Route exact path="/" render={() => <Selection lists={this.state.lists} filteredLists={this.state.filteredLists} filterBooks={this.filterBooks} chooseCategory={this.chooseCategory} />} />
-        <Route path="/preview/:category" render={() => <Preview category={this.state.category} />} />
+        <Route 
+          exact path="/" 
+          render={() => <Selection lists={this.state.lists} 
+          filteredLists={this.state.filteredLists} 
+          filterBooks={this.filterBooks} 
+          chooseCategory={this.chooseCategory} />} />
+        <Route 
+          exact path="/preview/:category" 
+          render={() => <Preview category={this.state.category} />} />
       </>
     )
   }
