@@ -13,7 +13,7 @@ class App extends Component {
     }
   }
 
-  filterBooks(event) {
+  filterBooks = (event) => {
     if (event.target.value === "misc") {
       const filteredBooks = this.state.lists.filter(category => {
         return !category.display_name.includes("Fiction") && !category.display_name.includes("Nonfiction") && !category.display_name.includes("Young Adult") && !category.display_name.includes("Children")

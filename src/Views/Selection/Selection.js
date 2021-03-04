@@ -9,7 +9,7 @@ const Selection = ({ lists, filteredLists, filterBooks }) => {
     <main className="selection">
       <h2 className="stepOne">Step 1: Pick a Category</h2>
       <Filter filterBooks={filterBooks}/>
-      <ListBox lists={this.state.lists} filteredLists={this.state.filteredLists}/>
+      <ListBox lists={lists} filteredLists={filteredLists}/>
     </main>
   )
 }
