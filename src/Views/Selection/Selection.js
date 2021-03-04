@@ -19,15 +19,24 @@ class Selection extends Component {
   render() {
     return (
       <main className="selection">
+        <h2 className="stepOne">Step 1: Pick a Category</h2>
         <form className="listFilters">
-          <label for="kids">Kids</label>
-          <input name="kids" type="checkbox" />
-          <label for="youngAdult">Young Adult</label>
-          <input name="youngAdult" type="checkbox" />
-          <label for="fiction">Fiction</label>
-          <input name="fiction" type="checkbox" />
-          <label for="nonFiction">Non-Fiction</label>
-          <input name="nonFiction" type="checkbox" />
+          <div>
+            <label for="kids">Kids</label>
+            <input name="kids" type="checkbox" />
+          </div>
+          <div>
+            <label for="youngAdult">Young Adult</label>
+            <input name="youngAdult" type="checkbox" />
+          </div>
+          <div>
+            <label for="fiction">Fiction</label>
+            <input name="fiction" type="checkbox" />
+          </div>
+          <div>
+            <label for="nonFiction">Non-Fiction</label>
+            <input name="nonFiction" type="checkbox" />
+          </div>
         </form>
         <ListBox list={this.state.list}/>
       </main>
