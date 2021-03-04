@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import getData from './util';
-import Selection from './Views/Selection/Selection';
 import Header from './Components/Header/Header';
+import Selection from './Views/Selection/Selection';
+import Preview from './Views/Preview/Preview';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       lists: [],
-      filteredLists: []
+      filteredLists: [],
+      category: ""
     }
   }
 
@@ -29,6 +32,10 @@ class App extends Component {
     }
   }
 
+  chooseCategory = (category) => {
+    this.setState({ category: category })
+  }
+
   componentDidMount = () => {
     return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
@@ -38,7 +45,8 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Selection lists={this.state.lists} filteredLists={this.state.filteredLists} filterBooks={this.filterBooks} />
+        <Route exact path="/" render={() => <Selection lists={this.state.lists} filteredLists={this.state.filteredLists} filterBooks={this.filterBooks} chooseCategory={this.chooseCategory} />} />
+        <Route path="/preview/:category" render={() => <Preview category={this.state.category} />} />
       </>
     )
   }
