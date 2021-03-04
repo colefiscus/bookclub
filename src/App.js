@@ -8,7 +8,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lists: []
+      lists: [],
+      filteredLists: []
+    }
+  }
+
+  filterBooks(event) {
+    if (event.target.value === "misc") {
+      const filteredBooks = this.state.lists.filter(category => {
+        return !category.display_name.includes("Fiction") && !category.display_name.includes("Nonfiction") && !category.display_name.includes("Young Adult") && !category.display_name.includes("Children")
+      })
+      this.setState({ filteredLists: filteredBooks })
+    } else if (event.target.value) {
+      const filteredBooks = this.state.lists.filter(category => {
+        return category.display_name.includes(event.target.value)
+      })
+      this.setState({ filteredLists: filteredBooks })
+    } else if (event.target.value === "all") {
+      this.setState({ filteredLists: [] })
     }
   }
 
@@ -21,7 +38,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Selection lists={this.state.lists}/>
+        <Selection lists={this.state.lists} filteredLists={this.state.filteredLists} filterBooks={this.filterBooks} />
       </>
     )
   }

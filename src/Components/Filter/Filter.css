@@ -1,0 +1,14 @@
+.listFilters {
+  margin: 2%;
+  width: 90%;
+  height: 3em;
+  border: 3px solid green;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.listFilters label {
+  font-size: larger;
+}
