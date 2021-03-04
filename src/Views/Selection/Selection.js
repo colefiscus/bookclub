@@ -13,13 +13,18 @@ class Selection extends Component {
   }
 
   filterBooks(event) {
-    if (event.target.value === "all") {
-      this.setState({ filteredLists: [] })
-    } else {
+    if (event.target.value === "misc") {
+      const filteredBooks = this.state.lists.filter(category => {
+        return !category.display_name.includes("Fiction") && !category.display_name.includes("Nonfiction") && !category.display_name.includes("Young Adult") && !category.display_name.includes("Children")
+      })
+      this.setState({ filteredLists: filteredBooks })
+    } else if (event.target.value) {
       const filteredBooks = this.state.lists.filter(category => {
         return category.display_name.includes(event.target.value)
       })
       this.setState({ filteredLists: filteredBooks })
+    } else if (event.target.value === "all") {
+      this.setState({ filteredLists: [] })
     }
   }
 
@@ -33,17 +38,9 @@ class Selection extends Component {
       <main className="selection">
         <h2 className="stepOne">Step 1: Pick a Category</h2>
         <form className="listFilters">
-          <div>
+        <div>
             <label htmlFor="all">All</label>
             <input name="filter" value="all" type="radio" onClick={(event) => this.filterBooks(event)} />
-          </div>
-          <div>
-            <label htmlFor="kids">Kids</label>
-            <input name="filter" value="Children" type="radio" onClick={(event) => this.filterBooks(event)} />
-          </div>
-          <div>
-            <label htmlFor="youngAdult">Young Adult</label>
-            <input name="filter" value="Young Adult" type="radio" onClick={(event) => this.filterBooks(event)} />
           </div>
           <div>
             <label htmlFor="fiction">Fiction</label>
@@ -52,6 +49,18 @@ class Selection extends Component {
           <div>
             <label htmlFor="nonFiction">Non-Fiction</label>
             <input name="filter" value="Nonfiction" type="radio" onClick={(event) => this.filterBooks(event)} />
+          </div>
+          <div>
+            <label htmlFor="misc">Miscellaneous</label>
+            <input name="filter" value="misc" type="radio" onClick={(event) => this.filterBooks(event)} />
+          </div>
+          <div>
+            <label htmlFor="youngAdult">Young Adult</label>
+            <input name="filter" value="Young Adult" type="radio" onClick={(event) => this.filterBooks(event)} />
+          </div>
+          <div>
+            <label htmlFor="kids">Kids</label>
+            <input name="filter" value="Children" type="radio" onClick={(event) => this.filterBooks(event)} />
           </div>
         </form>
         <ListBox lists={this.state.lists} filteredLists={this.state.filteredLists}/>
