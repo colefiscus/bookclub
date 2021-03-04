@@ -5,14 +5,35 @@
   align-items: center;
 }
 
-.categoryName {
-  margin: 0;
+.previewLabels {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.previewLabels h2 {
+  margin: 0;
+}
+
+.bookPreviewRank {
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bookRank {
+  border: 3px solid rebeccapurple;
+  text-align: center;
 }
 
 .bookPreview {
   font-size: larger;
-  width: 90%;
+  width: 80%;
   padding: 1%;
   border: 3px solid brown;
   margin-top: 2%;
