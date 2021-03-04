@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Selection.css';
-import getData from '../../util';
 import ListBox from '../../Components/ListBox/ListBox';
+import Filter from '../../Components/Filter/Filter';
 
-class Selection extends Component {
-  constructor() {
-    super();
-    this.state = {
-      list: [],
-    }
-  }
+const Selection = ({ lists, filteredLists, filterBooks, chooseCategory }) => {
 
-  componentDidMount = () => {
-    return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
-      .then(data => this.setState({ list: data.results }))
-  }
-
-  render() {
-    return (
-      <main className="selection">
-        <ListBox list={this.state.list}/>
-      </main>
-    )
-  }
+  return (
+    <main className="selection">
+      <h2 className="stepOne">Step 1: Browse Categories</h2>
+      <Filter filterBooks={filterBooks}/>
+      <ListBox lists={lists} filteredLists={filteredLists} chooseCategory={chooseCategory} />
+    </main>
+  )
 }
 
 export default Selection
