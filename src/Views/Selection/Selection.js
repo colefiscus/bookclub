@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Selection.css';
 import getData from '../../util';
+import ListBox from '../../Components/ListBox/ListBox';
 
 class Selection extends Component {
   constructor() {
@@ -17,8 +18,8 @@ class Selection extends Component {
 
   render() {
     return (
-      <main>
-
+      <main className="selection">
+        <ListBox list={this.state.list}/>
       </main>
     )
   }
