@@ -1,10 +1,19 @@
 import React from 'react';
 import './Approval.css';
 
-const Approval = () => {
-  return (
-    <h2>Heck yes brotherrr</h2>
-  )
+const Approval = ({ users }) => {
+
+  if (!users.length) {
+    return (
+      <section className="userForm">
+        <form>
+          <label>How many readers?
+            <input />
+          </label>
+        </form>
+      </section>
+    )
+  }
 }
 
 export default Approval;
