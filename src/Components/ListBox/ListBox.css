@@ -32,8 +32,13 @@
   color: black;
 }
 
+.categoryLink {
+  background-color: aquamarine;
+  width: 100%;
+  margin-top: 10%;
+}
+
 .categoryButton {
   background-color: aquamarine;
   width: 100%;
-  margin: 10%;
 }

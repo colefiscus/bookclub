@@ -5,6 +5,7 @@ import getData from './util';
 import Header from './Components/Header/Header';
 import Selection from './Views/Selection/Selection';
 import Preview from './Views/Preview/Preview';
+import Approval from './Views/Approval/Approval';
 
 class App extends Component {
   constructor() {
@@ -54,6 +55,7 @@ class App extends Component {
         <Route 
           exact path="/preview/:category" 
           render={() => <Preview category={this.state.category} />} />
+        <Route exact path="/approval" render={() => <Approval />} />
       </>
     )
   }
