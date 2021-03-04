@@ -6,57 +6,63 @@ const Filter = ({ filterBooks }) => {
   return (
     <form className="listFilters">
       <div>
-        <label>All
+        <label>
           <input 
             name="filter" 
-            value="all" 
+            value="All" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
+          All
         </label>
       </div>
       <div>
-        <label>Fiction
+        <label>
           <input 
             name="filter" 
             value="Fiction" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
+          Fiction
         </label>    
       </div>
       <div>
-        <label>Non-Fiction
+        <label>
           <input 
             name="filter" 
             value="Nonfiction" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
+          Non-Fiction
         </label> 
       </div>
       <div>
-        <label>Miscellaneous
+        <label>
           <input 
             name="filter" 
             value="misc" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
+          Miscellaneous
         </label>
       </div>
       <div>
-        <label>Young Adult
+        <label>
           <input 
             name="filter" 
             value="Young Adult" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
+          Young Adult
         </label>
       </div>
       <div>
-        <label>Kids
+        <label>
           <input 
-          name="filter" 
-          value="Children" 
-          type="radio" 
-          onClick={(event) => filterBooks(event)} />
+            name="filter" 
+            value="Children" 
+            type="radio" 
+            onClick={(event) => filterBooks(event)} />
+          Children
         </label>
       </div>
     </form>

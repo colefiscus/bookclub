@@ -13,23 +13,29 @@ class App extends Component {
     this.state = {
       lists: [],
       filteredLists: [],
-      category: ""
+      category: "",
+      users: []
     }
+  }
+  
+  componentDidMount = () => {
+    return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
+      .then(data => this.setState({ lists: data.results }))
   }
 
   filterBooks = (event) => {
-    if (event.target.value === "misc") {
+    if (event.target.value === "All") {
+      this.setState({ filteredLists: [] })
+    } else if (event.target.value === "misc") {
       const filteredBooks = this.state.lists.filter(category => {
         return !category.display_name.includes("Fiction") && !category.display_name.includes("Nonfiction") && !category.display_name.includes("Young Adult") && !category.display_name.includes("Children")
       })
       this.setState({ filteredLists: filteredBooks })
-    } else if (event.target.value) {
+    } else {
       const filteredBooks = this.state.lists.filter(category => {
         return category.display_name.includes(event.target.value)
       })
       this.setState({ filteredLists: filteredBooks })
-    } else if (event.target.value === "all") {
-      this.setState({ filteredLists: [] })
     }
   }
 
@@ -37,10 +43,6 @@ class App extends Component {
     this.setState({ category: category })
   }
 
-  componentDidMount = () => {
-    return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
-      .then(data => this.setState({ lists: data.results }))
-  }
 
   render() {
     return (
