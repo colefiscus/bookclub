@@ -1,0 +1,11 @@
+header {
+  width: 100%;
+  height: 10%;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  margin: 1%;
+}
