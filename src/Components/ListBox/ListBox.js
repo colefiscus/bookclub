@@ -8,7 +8,8 @@ const ListBox = ({ lists, filteredLists, chooseCategory }) => {
     return  <article className='categorySelection'>
               <div className='category'>
                 <Link 
-                  to={`preview/${category.list_name_encoded}`} 
+                  to={`preview/${category.list_name_encoded}`}
+                  className='categoryLink'
                   key={category.list_name_encoded}
                   onClick={() => chooseCategory(category.list_name_encoded)}>
                     {category.display_name}
