@@ -1,0 +1,21 @@
+.allBookPreviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryName {
+  margin: 0;
+  margin-top: 2%;
+}
+
+.bookPreview {
+  font-size: larger;
+  width: 90%;
+  padding: 1%;
+  border: 3px solid brown;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+}
