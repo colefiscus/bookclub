@@ -12,7 +12,7 @@ class Selection extends Component {
 
   componentDidMount = () => {
     return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
-      .then(data => console.log(data))
+      .then(data => this.setState({ list: data.results }))
   }
 
   render() {
