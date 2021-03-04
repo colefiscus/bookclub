@@ -1,5 +1,14 @@
 .selection {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3%;
+}
+
+.listFilters {
+  margin: 2%;
+  width: 90%;
+  border: 3px solid green;
 }
