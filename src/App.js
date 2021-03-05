@@ -43,6 +43,10 @@ class App extends Component {
     this.setState({ category: category })
   }
 
+  addUsers = (users) => {
+    this.setState({ users: users })
+  }
+
   render() {
     return (
       <>
@@ -56,7 +60,7 @@ class App extends Component {
         <Route 
           exact path="/preview/:category" 
           render={() => <Preview category={this.state.category} />} />
-        <Route exact path="/approval" render={() => <Approval users={this.state.users} />} />
+        <Route exact path="/approval" render={() => <Approval users={this.state.users} addUsers={this.addUsers} />} />
       </>
     )
   }

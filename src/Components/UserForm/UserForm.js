@@ -9,16 +9,22 @@ class UserForm extends Component {
     }
   }
 
-  addUserAmount(event) {
+  addUserAmount = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  clearInputs() {
+  clearInputs = () => {
     this.setState({ userAmount: '' });
   }
 
-  createUsers(event) {
+  createUsers = (event) => {
     event.preventDefault();
+    const users = [];
+    for (let i = 0; i < this.state.userAmount; i++) {
+      users.push({id: i})
+    }
+    console.log(users)
+    this.props.addUsers(users)
     this.clearInputs();
   }
 
