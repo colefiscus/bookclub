@@ -21,7 +21,7 @@ class UserAmountForm extends Component {
     event.preventDefault();
     const users = [];
     for (let i = 0; i < this.state.userAmount; i++) {
-      users.push({id: i + 1})
+      users.push({id: i})
     }
     this.props.addUsers(users)
     this.clearInputs();

@@ -5,26 +5,27 @@ class UserNamesForm extends Component {
   constructor() {
     super();
     this.state = {
-      names: []
+      name: ''
     }
   }
 
-  handleChange = (event) => {
-    this.setState({ names: [...this.state.names, {[event.target.id]: [event.target.value]}] })
+  handleChange = (event, id) => {
+    this.setState( {name: event.target.value} )
+    this.props.updateUsers(event.target.value, id)
   }
 
-  createUserNameInputs = (event) => this.props.users.map(user => {
+  createUserNameInputs = () => this.props.users.map(user => {
     return  <div key={user.id}>
-              <label>User {user.id} Name</label>
-              <input required id={user.id} onBlur={(event => this.handleChange(event))} />
+              <label>User {user.id + 1} Name</label>
+              <input required id={user.id} onKeyUp={(event) => this.handleChange(event, user.id)} />
             </div>
   })
 
-  updateUsers = (name) => {
-    this.props.users.find(user => {
-      return user.id
-    })
-  }
+  // updateUsers = (name) => {
+  //   this.props.users.find(user => {
+  //     return user.id
+  //   })
+  // }
 
   render() {
     return (

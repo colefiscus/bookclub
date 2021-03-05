@@ -3,7 +3,7 @@ import './Approval.css';
 import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
 import UserNamesForm from '../../Components/UserNamesForm/UserNamesForm';
 
-const Approval = ({ users, addUsers }) => {
+const Approval = ({ users, addUsers, updateUsers }) => {
 
   if (!users.length) {
     return (
@@ -15,7 +15,7 @@ const Approval = ({ users, addUsers }) => {
 
     return (
       <section>
-        <UserNamesForm users={users} />
+        <UserNamesForm users={users} updateUsers={updateUsers} />
       </section>
     )
   }

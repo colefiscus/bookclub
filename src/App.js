@@ -47,8 +47,12 @@ class App extends Component {
     this.setState({ users: users })
   }
 
-  updateUsers = (updatedUsers) => {
-    
+  updateUsers = (name, id) => {
+    const users = [...this.state.users]
+    const user = {...users[id]}
+    user.name = name
+    users[id] = user
+    this.setState({ users: users })
   }
 
   render() {
@@ -64,7 +68,7 @@ class App extends Component {
         <Route 
           exact path="/preview/:category" 
           render={() => <Preview category={this.state.category} />} />
-        <Route exact path="/approval" render={() => <Approval users={this.state.users} addUsers={this.addUsers} />} />
+        <Route exact path="/approval" render={() => <Approval users={this.state.users} addUsers={this.addUsers} updateUsers={this.updateUsers} />} />
       </>
     )
   }
