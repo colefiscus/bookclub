@@ -1,6 +1,7 @@
 import React from 'react';
 import './Approval.css';
 import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
+import UserNamesForm from '../../Components/UserNamesForm/UserNamesForm';
 
 const Approval = ({ users, addUsers }) => {
 
@@ -12,17 +13,9 @@ const Approval = ({ users, addUsers }) => {
     )
   } else {
 
-    const userNameInputs = users.map(user => {
-      return  <div key={user.id}>
-                <label>User {user.id} Name</label>
-                <input />
-              </div>
-    })
-
     return (
       <section>
-        {userNameInputs}
-        <button>Begin</button>
+        <UserNamesForm users={users} />
       </section>
     )
   }
