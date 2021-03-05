@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './UserForm.css';
+import './UserAmountForm.css';
 
-class UserForm extends Component {
+class UserAmountForm extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -38,4 +38,4 @@ class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default UserAmountForm;

@@ -1,24 +1,28 @@
 import React from 'react';
 import './Approval.css';
-import UserForm from '../../Components/UserForm/UserForm';
+import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
 
 const Approval = ({ users, addUsers }) => {
 
   if (!users.length) {
     return (
       <section className="userForm">
-        <UserForm users={users} addUsers={addUsers} />
+        <UserAmountForm users={users} addUsers={addUsers} />
       </section>
     )
   } else {
 
     const userNameInputs = users.map(user => {
-      return <label>User #{user.id}</label>
+      return  <div key={user.id}>
+                <label>User {user.id} Name</label>
+                <input />
+              </div>
     })
 
     return (
       <section>
         {userNameInputs}
+        <button>Begin</button>
       </section>
     )
   }

@@ -47,6 +47,10 @@ class App extends Component {
     this.setState({ users: users })
   }
 
+  updateUsers = (updatedUsers) => {
+    this.setState({ users: updatedUsers })
+  }
+
   render() {
     return (
       <>
