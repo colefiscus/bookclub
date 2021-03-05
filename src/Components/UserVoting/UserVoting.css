@@ -1,0 +1,26 @@
+.voteBoard {
+  display: grid;
+  grid-template-rows: repeat(11, 1fr);
+  border: 3px solid purple;
+  margin: 1%;
+  width: 30%;
+}
+
+.bookVote {
+  height: 3em;
+  font-size: x-large;
+}
+
+.voteButton {
+  width: 85%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.previewButton {
+  width: 15%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}

@@ -5,3 +5,8 @@
   width: 100%;
   height: 90vh;
 }
+
+.allVoteBoards {
+  display: flex;
+  flex-wrap: wrap;
+}

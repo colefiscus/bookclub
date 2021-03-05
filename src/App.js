@@ -80,12 +80,13 @@ class App extends Component {
         <Route 
           exact path="/preview/:category" 
           render={() => <Preview 
-                          category={this.state.category} /> } /> 
+                          bestSellers={this.state.bestSellers} /> } /> 
         <Route 
           exact path="/approval" 
           render={() => <Approval 
                           users={this.state.users} 
                           usersSet={this.state.usersSet} 
+                          bestSellers={this.state.bestSellers}
                           addUsers={this.addUsers} 
                           updateUsers={this.updateUsers}
                           setUsers={this.setUsers} /> } />

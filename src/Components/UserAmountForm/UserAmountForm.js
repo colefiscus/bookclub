@@ -34,7 +34,6 @@ class UserAmountForm extends Component {
         <input 
           type="number" 
           name="userAmount" 
-          placeholder="2" 
           value={this.state.userAmount} 
           min="2" 
           onChange={(event) => this.addUserAmount(event)} />
