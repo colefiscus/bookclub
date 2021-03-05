@@ -8,7 +8,7 @@ const Approval = ({ users }) => {
       <section className="userForm">
         <form>
           <label>How many readers?
-            <input />
+            <input type="number" min="2"/>
           </label>
         </form>
       </section>
