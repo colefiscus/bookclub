@@ -2,21 +2,34 @@ import React, { Component } from 'react';
 import './UserForm.css';
 
 class UserForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super();
     this.state = {
-      userAmount: 0,
-      names: [],
+      userAmount: '',
     }
+  }
+
+  addUserAmount(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  clearInputs() {
+    this.setState({ userAmount: '' });
+  }
+
+  createUsers(event) {
+    event.preventDefault();
+    this.clearInputs();
   }
 
   render() {
     return (
       <form>
         <label>How many readers?</label>
-        <input type="number" min="2"/>
+        <input type="number" name="userAmount" placeholder="2" value={this.state.userAmount} min="2" onChange={(event) => this.addUserAmount(event)}/>
+        <button onClick={(event) => this.createUsers(event)}>Next</button>
       </form>
-    )
+    );
   }
 }
 
