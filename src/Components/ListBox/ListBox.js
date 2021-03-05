@@ -17,7 +17,7 @@ const ListBox = ({ lists, filteredLists, chooseCategory }) => {
               <Link 
                 to='/approval' 
                 className='categoryLink'>
-                <button className='categoryButton'>
+                <button onClick={() => chooseCategory(category.list_name_encoded)} className='categoryButton'>
                   Select
                 </button>
               </Link>

@@ -5,7 +5,6 @@ import UserNames from '../../Components/UserNames/UserNames';
 import UserVoting from '../../Components/UserVoting/UserVoting';
 
 const Approval = ({ users, usersSet, addUsers, updateUsers, setUsers }) => {
-  console.log(usersSet)
   if (!users.length) {
     return (
       <section className="userForm">
@@ -24,7 +23,6 @@ const Approval = ({ users, usersSet, addUsers, updateUsers, setUsers }) => {
       </section>
     )
   } else if (usersSet === true) {
-    console.log('wtfff')
     return (
       <main>
         <UserVoting users={users}/>

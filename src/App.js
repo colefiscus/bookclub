@@ -14,6 +14,7 @@ class App extends Component {
       lists: [],
       filteredLists: [],
       category: "",
+      bestSellers: [],
       users: [],
       usersSet: false
     }
@@ -44,6 +45,8 @@ class App extends Component {
   }
 
   chooseCategory = (category) => {
+    getData(`https://api.nytimes.com/svc/books/v3/lists.json?list=${category}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
+      .then(data => this.setState({ bestSellers: data.results.splice(0, 10), category: category }))
     this.setState({ category: category })
   }
 
