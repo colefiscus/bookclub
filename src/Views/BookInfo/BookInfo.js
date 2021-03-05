@@ -1,10 +1,10 @@
 import React from 'react';
 import './BookInfo.css';
 
-const BookInfo = () => {
+const BookInfo = ({ bookDetailsToRender }) => {
   return (
     <main>
-      <h2>This is the Book!</h2>
+      <h2>{bookDetailsToRender.book_details[0].title}</h2>
     </main>
   )
 }

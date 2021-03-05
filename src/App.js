@@ -92,8 +92,15 @@ class App extends Component {
                           updateUsers={this.updateUsers}
                           setUsers={this.setUsers} /> } />
         <Route 
-          exact path="/details:___"
-          render={() => <BookInfo /> } />
+          exact path="/details/:title"
+          render={({ match }) => {
+            const { title } = match.params;
+            console.log(title)
+            const bookDetailsToRender = this.state.bestSellers.find(book => {
+              return book.book_details[0].title === title
+            })
+            return <BookInfo bookDetailsToRender={bookDetailsToRender} /> } 
+          }/> 
       </>
     )
   }
