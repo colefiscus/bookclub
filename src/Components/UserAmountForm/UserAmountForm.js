@@ -31,8 +31,16 @@ class UserAmountForm extends Component {
     return (
       <form>
         <label>How many readers?</label>
-        <input type="number" name="userAmount" placeholder="2" value={this.state.userAmount} min="2" onChange={(event) => this.addUserAmount(event)}/>
-        <button onClick={(event) => this.createUsers(event)}>Next</button>
+        <input 
+          type="number" 
+          name="userAmount" 
+          placeholder="2" 
+          value={this.state.userAmount} 
+          min="2" 
+          onChange={(event) => this.addUserAmount(event)} />
+        <button onClick={(event) => this.createUsers(event)}>
+          Next
+        </button>
       </form>
     );
   }

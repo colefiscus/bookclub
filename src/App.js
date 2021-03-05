@@ -26,9 +26,12 @@ class App extends Component {
   filterBooks = (event) => {
     if (event.target.value === "All") {
       this.setState({ filteredLists: [] })
-    } else if (event.target.value === "misc") {
+    } else if (event.target.value === "Misc") {
       const filteredBooks = this.state.lists.filter(category => {
-        return !category.display_name.includes("Fiction") && !category.display_name.includes("Nonfiction") && !category.display_name.includes("Young Adult") && !category.display_name.includes("Children")
+        return !category.display_name.includes("Fiction") 
+            && !category.display_name.includes("Nonfiction") 
+            && !category.display_name.includes("Young Adult") 
+            && !category.display_name.includes("Children")
       })
       this.setState({ filteredLists: filteredBooks })
     } else {

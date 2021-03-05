@@ -39,7 +39,7 @@ const Filter = ({ filterBooks }) => {
         <label>
           <input 
             name="filter" 
-            value="misc" 
+            value="Misc" 
             type="radio" 
             onClick={(event) => filterBooks(event)} />
           Miscellaneous
