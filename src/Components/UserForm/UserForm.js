@@ -23,7 +23,6 @@ class UserForm extends Component {
     for (let i = 0; i < this.state.userAmount; i++) {
       users.push({id: i})
     }
-    console.log(users)
     this.props.addUsers(users)
     this.clearInputs();
   }

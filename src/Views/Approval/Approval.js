@@ -7,12 +7,19 @@ const Approval = ({ users, addUsers }) => {
   if (!users.length) {
     return (
       <section className="userForm">
-        <UserForm addUsers={addUsers} />
+        <UserForm users={users} addUsers={addUsers} />
       </section>
     )
   } else {
+
+    const userNameInputs = users.map(user => {
+      return <label>User #{user.id}</label>
+    })
+
     return (
-      <h2>wowww...</h2>
+      <section>
+        {userNameInputs}
+      </section>
     )
   }
 }
