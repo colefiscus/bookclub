@@ -7,7 +7,7 @@ const BookPreview = ({ bestSellers }) => {
   if (bestSellers.length) {
     const categoryName = bestSellers[0].display_name;
     const bookPreviews = bestSellers.map(book => {
-      return  <section className="bookPreviewRank">
+      return  <section className="bookPreviewRank" key={book.book_details[0].primary_isbn13}>
                 <aside className="bookRank">
                   <p>#{book.rank}</p>
                 </aside>

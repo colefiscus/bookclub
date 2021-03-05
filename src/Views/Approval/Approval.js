@@ -8,16 +8,16 @@ const Approval = ({ users, usersSet, bestSellers, addUsers, updateUsers, setUser
   if (!users.length) {
     return (
       <section className="userForm">
-        <UserAmountForm 
-          users={users} 
+        <UserAmountForm
+          users={users}
           addUsers={addUsers} />
       </section>
     )
   } else if (users.length && usersSet === false) {
     return (
       <section>
-        <UserNames 
-          users={users} 
+        <UserNames
+          users={users}
           updateUsers={updateUsers}
           setUsers={setUsers} />
       </section>

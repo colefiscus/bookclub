@@ -1,10 +1,10 @@
 import React from 'react';
 import './BookInfo.css';
 
-const BookInfo = ({ bookDetailsToRender }) => {
+const BookInfo = ({ bookDetails }) => {
   return (
     <main>
-      <h2>{bookDetailsToRender.book_details[0].title}</h2>
+      <h2>{bookDetails.book_details[0].title}</h2>
     </main>
   )
 }

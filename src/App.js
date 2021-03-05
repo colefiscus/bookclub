@@ -71,36 +71,34 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Route 
+        <Route
           exact path="/" 
-          render={() => <Selection 
-                          lists={this.state.lists} 
-                          filteredLists={this.state.filteredLists} 
-                          filterBooks={this.filterBooks} 
+          render={() => <Selection
+                          lists={this.state.lists}
+                          filteredLists={this.state.filteredLists}
+                          filterBooks={this.filterBooks}
                           chooseCategory={this.chooseCategory} /> } />
-        <Route 
+        <Route
           exact path="/preview/:category" 
-          render={() => <Preview 
+          render={() => <Preview
                           bestSellers={this.state.bestSellers} /> } /> 
-        <Route 
-          exact path="/approval" 
-          render={() => <Approval 
-                          users={this.state.users} 
-                          usersSet={this.state.usersSet} 
+        <Route
+          exact path="/approval"
+          render={() => <Approval
+                          users={this.state.users}
+                          usersSet={this.state.usersSet}
                           bestSellers={this.state.bestSellers}
-                          addUsers={this.addUsers} 
+                          addUsers={this.addUsers}
                           updateUsers={this.updateUsers}
                           setUsers={this.setUsers} /> } />
-        <Route 
+        <Route
           exact path="/details/:title"
           render={({ match }) => {
             const { title } = match.params;
-            console.log(title)
             const bookDetailsToRender = this.state.bestSellers.find(book => {
               return book.book_details[0].title === title
             })
-            return <BookInfo bookDetailsToRender={bookDetailsToRender} /> } 
-          }/> 
+            return <BookInfo bookDetails={bookDetailsToRender} /> } }/>
       </>
     )
   }

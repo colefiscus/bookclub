@@ -6,12 +6,12 @@ const UserVoting = ({ users, bestSellers }) => {
 
   const voteBoards = users.map(user => {
     const bookOptions = bestSellers.map(book => {
-      return    <div className="bookVote">
+      return    <div className="bookVote" key={book.book_details[0].primary_isbn13}>
                   <Link to={`details/${book.book_details[0].title}`} className="previewLink">📖</Link> 
                   <button className="voteButton">{book.book_details[0].title}</button>
                 </div>
     })
-    return  <section className="voteBoard">
+    return  <section className="voteBoard" key={user.id}>
               <h2>{user.name}</h2>
               {bookOptions}
             </section>
