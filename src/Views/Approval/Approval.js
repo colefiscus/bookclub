@@ -1,16 +1,13 @@
 import React from 'react';
 import './Approval.css';
+import UserForm from '../../Components/UserForm/UserForm';
 
 const Approval = ({ users }) => {
 
   if (!users.length) {
     return (
       <section className="userForm">
-        <form>
-          <label>How many readers?
-            <input type="number" min="2"/>
-          </label>
-        </form>
+        <UserForm />
       </section>
     )
   }
