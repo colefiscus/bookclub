@@ -6,6 +6,7 @@ import Header from './Components/Header/Header';
 import Selection from './Views/Selection/Selection';
 import Preview from './Views/Preview/Preview';
 import Approval from './Views/Approval/Approval';
+import BookInfo from './Views/BookInfo/BookInfo';
 
 class App extends Component {
   constructor() {
