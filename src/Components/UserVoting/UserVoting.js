@@ -7,7 +7,7 @@ const UserVoting = ({ users, bestSellers }) => {
   const voteBoards = users.map(user => {
     const bookOptions = bestSellers.map(book => {
       return    <div className="bookVote">
-                  <Link className="previewLink">📖</Link> 
+                  <Link to={`details/${book.book_details[0].title}`} className="previewLink">📖</Link> 
                   <button className="voteButton">{book.book_details[0].title}</button>
                 </div>
     })

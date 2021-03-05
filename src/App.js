@@ -91,6 +91,9 @@ class App extends Component {
                           addUsers={this.addUsers} 
                           updateUsers={this.updateUsers}
                           setUsers={this.setUsers} /> } />
+        <Route 
+          exact path="/details:___"
+          render={() => <BookInfo /> } />
       </>
     )
   }
