@@ -14,7 +14,8 @@ class App extends Component {
       lists: [],
       filteredLists: [],
       category: "",
-      users: []
+      users: [],
+      usersSet: false
     }
   }
   
@@ -58,20 +59,33 @@ class App extends Component {
     this.setState({ users: users })
   }
 
+  setUsers = () => {
+    this.setState({ usersSet: true })
+  }
+
   render() {
     return (
       <>
         <Header />
         <Route 
           exact path="/" 
-          render={() => <Selection lists={this.state.lists} 
-          filteredLists={this.state.filteredLists} 
-          filterBooks={this.filterBooks} 
-          chooseCategory={this.chooseCategory} />} />
+          render={() => <Selection 
+                          lists={this.state.lists} 
+                          filteredLists={this.state.filteredLists} 
+                          filterBooks={this.filterBooks} 
+                          chooseCategory={this.chooseCategory} /> } />
         <Route 
           exact path="/preview/:category" 
-          render={() => <Preview category={this.state.category} />} />
-        <Route exact path="/approval" render={() => <Approval users={this.state.users} addUsers={this.addUsers} updateUsers={this.updateUsers} />} />
+          render={() => <Preview 
+                          category={this.state.category} /> } /> 
+        <Route 
+          exact path="/approval" 
+          render={() => <Approval 
+                          users={this.state.users} 
+                          usersSet={this.state.usersSet} 
+                          addUsers={this.addUsers} 
+                          updateUsers={this.updateUsers}
+                          setUsers={this.setUsers} /> } />
       </>
     )
   }

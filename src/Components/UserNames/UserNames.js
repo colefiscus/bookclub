@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './UserNames.css';
 
-const UserNames = ({ users, updateUsers }) => {
+const UserNames = ({ users, updateUsers, setUsers }) => {
   const UserNameInputs = users.map(user => {
     return  <div key={user.id}>
               <label>User {user.id + 1} Name</label>
@@ -12,10 +12,15 @@ const UserNames = ({ users, updateUsers }) => {
             </div>
   })
 
+  const setUserNames = (event) => {
+    event.preventDefault()
+    setUsers()
+  }
+
   return (
     <form>
       {UserNameInputs}
-      <button>BEGIN</button>
+      <button onClick={(event) => setUserNames(event)}>BEGIN</button>
     </form>
   )
 }
