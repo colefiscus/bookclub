@@ -18,7 +18,7 @@ const BookInfo = ({ currentBook, bookDetails }) => {
     let reviews;
     if (bookDetails[1].results.length) {
       reviews = bookDetails[1].results.map(review => {
-        return  <div>
+        return  <div key={review.url}>
                   <p>{review.summary}</p>
                   <p>{review.url}</p>
                 </div>
