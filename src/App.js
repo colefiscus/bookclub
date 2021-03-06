@@ -51,6 +51,12 @@ class App extends Component {
     this.setState({ category: category })
   }
 
+  chooseBook = (isbn) => {
+    const publisherDetails = getData(`https://reststop.randomhouse.com/resources/titles/${isbn}/`);
+    const coverImage = getData(`http://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`);
+    
+  }
+
   addUsers = (users) => {
     this.setState({ users: users })
   }
