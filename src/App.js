@@ -55,7 +55,6 @@ class App extends Component {
   chooseBook = (isbn) => {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
-        console.log(data)
         const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
         const bookData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org/${data.key}.json`)
         const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
@@ -71,7 +70,7 @@ class App extends Component {
   setUsers = () => {
     this.setState({ usersSet: true })
   }
-  
+
   updateUsers = (name, id) => {
     const users = [...this.state.users]
     const user = {...users[id]}
@@ -113,7 +112,7 @@ class App extends Component {
             const bookDetailsToRender = this.state.bestSellers.find(book => {
               return book.book_details[0].title === title
             })
-            return <BookInfo bookDetails={bookDetailsToRender} /> } }/>
+            return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} /> } }/>
       </>
     )
   }

@@ -1,10 +1,12 @@
 import React from 'react';
 import './BookInfo.css';
 
-const BookInfo = ({ bookDetails }) => {
+const BookInfo = ({ currentBook, bookDetails }) => {
+  console.log(currentBook)
+  console.log(bookDetails)
   return (
     <main>
-      <h2>{bookDetails.book_details[0].title}</h2>
+      <h2>helloooo</h2>
     </main>
   )
 }
