@@ -12,12 +12,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lists: [],
-      filteredLists: [],
-      category: "",
-      bestSellers: [],
       users: [],
-      usersSet: false
+      lists: [],
+      category: "",
+      bookDetails: {},
+      bestSellers: [],
+      usersSet: false,
+      filteredLists: []
     }
   }
   
@@ -52,15 +53,25 @@ class App extends Component {
   }
 
   chooseBook = (isbn) => {
-    const publisherDetails = getData(`https://reststop.randomhouse.com/resources/titles/${isbn}/`);
-    const coverImage = getData(`http://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`);
-    
+    getData(`https://openlibrary.org/isbn/${isbn}.json`)
+      .then(data => {
+        console.log(data)
+        const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
+        const bookData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org/${data.key}.json`)
+        const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
+        Promise.all([apiData, bookData, workData])
+          .then((details) => this.setState({ bookDetails: {1: details[0][`ISBN:${isbn}`], 2: details[1], 3: details[2]} }))
+      })
   }
 
   addUsers = (users) => {
     this.setState({ users: users })
   }
-
+  
+  setUsers = () => {
+    this.setState({ usersSet: true })
+  }
+  
   updateUsers = (name, id) => {
     const users = [...this.state.users]
     const user = {...users[id]}
@@ -69,9 +80,6 @@ class App extends Component {
     this.setState({ users: users })
   }
 
-  setUsers = () => {
-    this.setState({ usersSet: true })
-  }
 
   render() {
     return (
@@ -96,7 +104,8 @@ class App extends Component {
                           bestSellers={this.state.bestSellers}
                           addUsers={this.addUsers}
                           updateUsers={this.updateUsers}
-                          setUsers={this.setUsers} /> } />
+                          setUsers={this.setUsers} 
+                          chooseBook={this.chooseBook} /> } />
         <Route
           exact path="/details/:title"
           render={({ match }) => {
