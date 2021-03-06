@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       users: [],
       lists: [],
+      error: "",
       category: "",
       bookDetails: "",
       bestSellers: [],
@@ -21,10 +22,15 @@ class App extends Component {
       filteredLists: []
     }
   }
+
   
   componentDidMount = () => {
     return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
+  }
+
+  handleError(result) {
+    this.setState({ error: result })
   }
 
   filterBooks = (event) => {
@@ -55,12 +61,17 @@ class App extends Component {
   chooseBook = (isbn) => {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
-        const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
-        const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
-        const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
-        Promise.all([apiData, reviews, workData])
-          .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
-          .catch(error => console.log(error))
+        if (typeof data === 'string') {
+          this.handleError(data)
+        } else {
+          console.log(data)
+          const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
+          const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
+          const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
+          Promise.all([apiData, reviews, workData])
+            .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
+            .catch(error => console.log(error))
+        }
       })
   }
 
@@ -82,40 +93,45 @@ class App extends Component {
 
 
   render() {
-    return (
-      <>
-        <Header />
-        <Route
-          exact path="/" 
-          render={() => <Selection
-                          lists={this.state.lists}
-                          filteredLists={this.state.filteredLists}
-                          filterBooks={this.filterBooks}
-                          chooseCategory={this.chooseCategory} /> } />
-        <Route
-          exact path="/preview/:category" 
-          render={() => <Preview
-                          bestSellers={this.state.bestSellers} /> } /> 
-        <Route
-          exact path="/approval"
-          render={() => <Approval
-                          users={this.state.users}
-                          usersSet={this.state.usersSet}
-                          bestSellers={this.state.bestSellers}
-                          addUsers={this.addUsers}
-                          updateUsers={this.updateUsers}
-                          setUsers={this.setUsers} 
-                          chooseBook={this.chooseBook} /> } />
-        <Route
-          exact path="/details/:title"
-          render={({ match }) => {
-            const { title } = match.params;
-            const bookDetailsToRender = this.state.bestSellers.find(book => {
-              return book.book_details[0].title === title
-            })
-            return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} /> } }/>
-      </>
-    )
+    if (this.state.error) {
+      return (
+        <h2>{this.state.error}</h2>
+      )
+    } else {
+      return (
+        <>
+          <Header />
+          <Route
+            exact path="/" 
+            render={() => <Selection
+                            lists={this.state.lists}
+                            filteredLists={this.state.filteredLists}
+                            filterBooks={this.filterBooks}
+                            chooseCategory={this.chooseCategory} /> } />
+          <Route
+            exact path="/preview/:category" 
+            render={() => <Preview
+                            bestSellers={this.state.bestSellers} /> } /> 
+          <Route
+            exact path="/approval"
+            render={() => <Approval
+                            users={this.state.users}
+                            usersSet={this.state.usersSet}
+                            bestSellers={this.state.bestSellers}
+                            addUsers={this.addUsers}
+                            updateUsers={this.updateUsers}
+                            setUsers={this.setUsers} 
+                            chooseBook={this.chooseBook} /> } />
+          <Route
+            exact path="/details/:title"
+            render={({ match }) => {
+              const { title } = match.params;
+              const bookDetailsToRender = this.state.bestSellers.find(book => {
+                return book.book_details[0].title === title
+              })
+              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} /> } }/>
+        </>
+    )}
   }
 }
 
