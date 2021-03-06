@@ -59,7 +59,7 @@ class App extends Component {
         const bookData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org/${data.key}.json`)
         const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
         Promise.all([apiData, bookData, workData])
-          .then((details) => this.setState({ bookDetails: {api: details[0][`ISBN:${isbn}`], editions: details[1], works: details[2]} }))
+          .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
           .catch(error => console.log(error))
       })
   }
