@@ -69,6 +69,9 @@ class App extends Component {
           Promise.all([apiData, reviews, workData])
             .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
             .catch(error => console.log(error))
+        } else {
+          console.log(data)
+          this.setState({ error: data})
         }
       })
   }
@@ -98,14 +101,14 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.error) {
-      return (
-        <main>
-          <h2>{this.state.error}</h2>
-          <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
-        </main>
-      )
-    } else {
+    // if (this.state.error) {
+    //   return (
+    //     <main>
+    //       <h2>{this.state.error}</h2>
+    //       <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
+    //     </main>
+    //   )
+    // } else {
       return (
         <>
           <Header />
@@ -138,10 +141,10 @@ class App extends Component {
               const bookDetailsToRender = this.state.bestSellers.find(book => {
                 return book.book_details[0].title === title
               })
-              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} removeDetails={this.removeDetails} /> } }/>
+              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} error={this.state.error} removeDetails={this.removeDetails} /> } }/>
         </>
     )}
-  }
+  // }
 }
 
 export default App;

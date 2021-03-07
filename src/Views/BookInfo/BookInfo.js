@@ -2,7 +2,7 @@ import React from 'react';
 import './BookInfo.css';
 import { Link } from 'react-router-dom';
 
-const BookInfo = ({ currentBook, bookDetails, removeDetails }) => {
+const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
   console.log(currentBook)
   console.log(bookDetails)
   if (bookDetails) {
@@ -50,7 +50,7 @@ const BookInfo = ({ currentBook, bookDetails, removeDetails }) => {
         </div>
       </main>
     )
-  } else if (currentBook && !bookDetails) {
+  } else if (currentBook && error) {
     return (
         <main>
           <Link to="/approval" onClick={() => removeDetails()}>Back to Voting</Link>
