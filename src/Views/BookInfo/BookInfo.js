@@ -1,7 +1,8 @@
 import React from 'react';
 import './BookInfo.css';
+import { Link } from 'react-router-dom';
 
-const BookInfo = ({ currentBook, bookDetails }) => {
+const BookInfo = ({ currentBook, bookDetails, removeDetails }) => {
   console.log(currentBook)
   console.log(bookDetails)
   if (bookDetails) {
@@ -27,6 +28,7 @@ const BookInfo = ({ currentBook, bookDetails }) => {
 
     return (
       <main>
+        <Link to="/approval" onClick={() => removeDetails()}>Back to Voting</Link>
         <p>-------------- currentBook -----------------</p>
         <h2>{currentBook.book_details[0].title}</h2>
         <p>{currentBook.book_details[0].description}</p>
@@ -48,12 +50,23 @@ const BookInfo = ({ currentBook, bookDetails }) => {
         </div>
       </main>
     )
+  } else if (currentBook && !bookDetails) {
+    return (
+        <main>
+          <Link to="/approval" onClick={() => removeDetails()}>Back to Voting</Link>
+          <h2>{currentBook.book_details[0].title}</h2>
+          <p>{currentBook.book_details[0].description}</p>
+          <p>Publisher - {currentBook.book_details[0].publisher}</p>
+          <p>Category - {currentBook.display_name}</p>
+          <p>Link - {currentBook.amazon_product_url}</p>
+          <p>So sorry, the rest of the details for this book don't seem to exist yet...</p>
+        </main>
+    )
   } else {
     return (
       <h2>Loading...</h2>
     )
   }
-
 }
 
 export default BookInfo

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 import getData from './util';
 import Header from './Components/Header/Header';
@@ -61,9 +61,7 @@ class App extends Component {
   chooseBook = (isbn) => {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
-        if (typeof data === 'string') {
-          this.handleError(data)
-        } else {
+        if (typeof data !== 'string') {
           console.log(data)
           const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
           const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
@@ -83,6 +81,14 @@ class App extends Component {
     this.setState({ usersSet: true })
   }
 
+  removeDetails = () => {
+    this.setState({ bookDetails: "" })
+  }
+
+  removeError = () => {
+    this.setState({ error: '' })
+  }
+
   updateUsers = (name, id) => {
     const users = [...this.state.users]
     const user = {...users[id]}
@@ -91,11 +97,13 @@ class App extends Component {
     this.setState({ users: users })
   }
 
-
   render() {
     if (this.state.error) {
       return (
-        <h2>{this.state.error}</h2>
+        <main>
+          <h2>{this.state.error}</h2>
+          <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
+        </main>
       )
     } else {
       return (
@@ -121,7 +129,8 @@ class App extends Component {
                             addUsers={this.addUsers}
                             updateUsers={this.updateUsers}
                             setUsers={this.setUsers} 
-                            chooseBook={this.chooseBook} /> } />
+                            chooseBook={this.chooseBook} 
+                            removeDetails={this.removeDetails} /> } />
           <Route
             exact path="/details/:title"
             render={({ match }) => {
@@ -129,7 +138,7 @@ class App extends Component {
               const bookDetailsToRender = this.state.bestSellers.find(book => {
                 return book.book_details[0].title === title
               })
-              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} /> } }/>
+              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} removeDetails={this.removeDetails} /> } }/>
         </>
     )}
   }
