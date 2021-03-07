@@ -12,19 +12,26 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
                 </div>
     })
     if (user.id === 0) {
-      return  <section className={`voteBoard currentBoard`} key={user.id}>
+      return  <section className="voteBoard currentBoard" id={user.id} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton">Submit</button>
+                <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
               </section>     
     } else {
-      return  <section className={`voteBoard`} key={user.id}>
+      return  <section className="voteBoard" id={user.id} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton">Submit</button>
+                <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
               </section>
     }
   });
+
+  const changeVoteBoard = () => {
+    const currentBoard = document.querySelector(".currentBoard")
+    const nextBoard = document.getElementById(parseInt(currentBoard.id) + 1)
+    currentBoard.classList.remove("currentBoard")
+    nextBoard.classList.add("currentBoard")
+  }
 
   return (
     <>
