@@ -11,11 +11,19 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
                   <button className="voteButton">{book.book_details[0].title}</button>
                 </div>
     })
-    return  <section className="voteBoard" key={user.id}>
-              <h2>{user.name}</h2>
-              {bookOptions}
-              <button className="voteCompleteButton">Submit</button>
-            </section>     
+    if (user.id === 0) {
+      return  <section className={`voteBoard currentBoard`} key={user.id}>
+                <h2>{user.name}</h2>
+                {bookOptions}
+                <button className="voteCompleteButton">Submit</button>
+              </section>     
+    } else {
+      return  <section className={`voteBoard`} key={user.id}>
+                <h2>{user.name}</h2>
+                {bookOptions}
+                <button className="voteCompleteButton">Submit</button>
+              </section>
+    }
   });
 
   return (

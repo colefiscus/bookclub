@@ -7,6 +7,10 @@
   width: 30%;
 }
 
+.currentBoard {
+  background-color: blueviolet;
+}
+
 .bookVote {
   height: 3em;
   font-size: x-large;

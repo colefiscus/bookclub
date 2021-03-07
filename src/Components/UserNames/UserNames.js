@@ -21,7 +21,7 @@ const UserNames = ({ users, updateUsers, setUsers }) => {
   return (
     <form onSubmit={(event) => setUserNames(event)}>
       {userNameInputs}
-      <input type="submit" />
+      <button>SUBMIT</button>
     </form>
   )
 }

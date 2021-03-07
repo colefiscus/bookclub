@@ -99,6 +99,10 @@ class App extends Component {
     this.setState({ users: users })
   }
 
+  addUserVote = () => {
+    
+  }
+
   render() {
     // if (this.state.error) {
     //   return (
