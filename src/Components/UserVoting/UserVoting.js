@@ -14,8 +14,8 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
     return  <section className="voteBoard" key={user.id}>
               <h2>{user.name}</h2>
               {bookOptions}
-            </section>
-           
+              <button className="voteCompleteButton">Submit</button>
+            </section>     
   });
 
   return (
