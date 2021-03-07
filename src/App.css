@@ -1,9 +1,11 @@
 html {
   height: fit-content;
+  margin: 0;
 }
 
 body {
   height: fit-content;
+  margin: 0;
 }
 
 #root {

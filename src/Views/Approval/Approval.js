@@ -4,7 +4,7 @@ import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
 import UserNames from '../../Components/UserNames/UserNames';
 import UserVoting from '../../Components/UserVoting/UserVoting';
 
-const Approval = ({ users, usersSet, bestSellers, addUsers, updateUsers, setUsers }) => {
+const Approval = ({ users, usersSet, bestSellers, addUsers, updateUsers, setUsers, chooseBook }) => {
   if (!users.length) {
     return (
       <section className="userForm">
@@ -25,7 +25,7 @@ const Approval = ({ users, usersSet, bestSellers, addUsers, updateUsers, setUser
   } else if (usersSet === true) {
     return (
       <main className="allVoteBoards">
-        <UserVoting users={users} bestSellers={bestSellers} />
+        <UserVoting users={users} bestSellers={bestSellers} chooseBook={chooseBook} />
       </main>
     )
   }
