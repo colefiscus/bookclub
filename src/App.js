@@ -23,7 +23,6 @@ class App extends Component {
     }
   }
 
-  
   componentDidMount = () => {
     return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
@@ -85,7 +84,7 @@ class App extends Component {
   }
 
   removeDetails = () => {
-    this.setState({ bookDetails: "" })
+    this.setState({ bookDetails: "", error: "" })
   }
 
   removeError = () => {
@@ -141,7 +140,11 @@ class App extends Component {
               const bookDetailsToRender = this.state.bestSellers.find(book => {
                 return book.book_details[0].title === title
               })
-              return <BookInfo currentBook={bookDetailsToRender} bookDetails={this.state.bookDetails} error={this.state.error} removeDetails={this.removeDetails} /> } }/>
+              return <BookInfo 
+                        currentBook={bookDetailsToRender} 
+                        bookDetails={this.state.bookDetails} 
+                        error={this.state.error} 
+                        removeDetails={this.removeDetails} /> } }/>
         </>
     )}
   // }

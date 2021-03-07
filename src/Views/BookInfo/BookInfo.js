@@ -9,7 +9,7 @@ const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
 
     let description;
     if (!bookDetails[1].description) {
-      description = "No description available."
+      description = "No summary available."
     } else if (typeof bookDetails[1].description === 'string') {
       description = bookDetails[1].description
     } else if (bookDetails[1].description.value) {
@@ -37,15 +37,16 @@ const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
         <p>Link - {currentBook.amazon_product_url}</p>
         <p>--------------- bookDetails[0] ----------------</p>
         <h3>{bookDetails[0].subtitle}</h3>
-        {bookDetails[0].authors && <p>{bookDetails[0].authors[0].name}</p>}
-        <p>{bookDetails[0].number_of_pages}</p>
-        <p>{bookDetails[0].publish_date}</p>
-        {bookDetails[0].excerpts && <p>{bookDetails[0].excerpts[0].text}</p>}
+        {bookDetails[0].authors && <p>By {bookDetails[0].authors[0].name}</p>}
+        <p>Number of Pages - {bookDetails[0].number_of_pages}</p>
+        <p>Publish Date - {bookDetails[0].publish_date}</p>
+        {bookDetails[0].excerpts && <p>First sentence - {bookDetails[0].excerpts[0].text}</p>}
         {bookDetails[0].cover && <img src={bookDetails[0].cover.large} alt={`Cover of ${currentBook.book_details[0].title}`} />}
         <p>------------------ bookDetails[2] ---------------</p>
         <p>{description}</p>
         <p>------------------ bookDetails[1] ---------------</p>
         <div>
+          <p>Reviews:</p>
           {reviews}
         </div>
       </main>
