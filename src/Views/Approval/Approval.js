@@ -24,7 +24,8 @@ const Approval = ({ users, usersSet, bestSellers, addUsers, updateUsers, setUser
     )
   } else if (usersSet === true) {
     return (
-      <main className="allVoteBoards">
+      <main className="votingScreen">
+        <button className="finalSubmitButton hidden">FINAL SUBMIT</button>
         <UserVoting users={users} bestSellers={bestSellers} chooseBook={chooseBook} />
       </main>
     )

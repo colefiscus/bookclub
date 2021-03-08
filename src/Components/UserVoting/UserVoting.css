@@ -7,6 +7,11 @@
   width: 30%;
 }
 
+.allVoteBoards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .currentBoard {
   background-color: blueviolet;
 }
