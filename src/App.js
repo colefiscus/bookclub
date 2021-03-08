@@ -186,6 +186,10 @@ class App extends Component {
                         bookDetails={this.state.bookDetails} 
                         error={this.state.error} 
                         removeDetails={this.removeDetails} /> } }/>
+          <Route 
+            exact path="/outcome"
+            render={() => <Outcome 
+                            matchingBooks={this.state.matchingBooks} />} />
         </>
     )}
   // }
