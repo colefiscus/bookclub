@@ -6,23 +6,46 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
 
   const voteBoards = users.map(user => {
     const bookOptions = bestSellers.map(book => {
-      return    <div className="bookVote" key={book.book_details[0].primary_isbn13}>
-                  <Link to={`details/${book.book_details[0].title}`} className="previewLink" onClick={() => chooseBook(book.book_details[0].primary_isbn13)}>📖</Link> 
-                  <button className={`voteButton user${user.id}_book${book.book_details[0].primary_isbn13}`} onClick={() => toggleBookVote(user.id, book.book_details[0].primary_isbn13)}>{book.book_details[0].title}</button>
+
+      const bookIsbn = book.book_details[0].primary_isbn13
+      const bookTitle = book.book_details[0].title
+
+      return    <div className="bookVote" key={bookIsbn}>
+                  <Link 
+                    to={`details/${bookTitle}`} 
+                    className="previewLink" 
+                    onClick={() => chooseBook(bookIsbn)}>
+                      📖
+                  </Link> 
+                  <button 
+                    className={user.books && user.books.includes(parseInt(bookIsbn)) ? 
+                      `voteButton userVoteForBook user${user.id}_book${bookIsbn}` : 
+                      `voteButton user${user.id}_book${bookIsbn}`} 
+                    onClick={() => toggleBookVote(user.id, bookIsbn)}>
+                      {bookTitle}
+                  </button>
                 </div>
     })
     if (user.id === currentUser) {
       return  <section className="voteBoard currentBoard" id={user.id + 1} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton" onClick={() => changeVoteBoard(user.id)}>Submit</button>
+                <button 
+                  className="voteCompleteButton" 
+                  onClick={() => changeVoteBoard(user.id)}>
+                    Submit
+                </button>
                 <div></div>
               </section>     
     } else {
       return  <section className="voteBoard" id={user.id + 1} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton" onClick={() => changeVoteBoard(user.id)}>Submit</button>
+                <button 
+                  className="voteCompleteButton" 
+                  onClick={() => changeVoteBoard(user.id)}>
+                    Submit
+                </button>
                 <div className="overlay"></div>
               </section>
     }

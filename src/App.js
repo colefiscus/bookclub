@@ -112,6 +112,11 @@ class App extends Component {
     }
     if (!user.books.includes(parseInt(isbn))) {
       user.books.push(parseInt(isbn))
+    } else if (user.books.includes(parseInt(isbn))) {
+      const index = user.books.indexOf(parseInt(isbn))
+      console.log(index)
+      console.log(user.books)
+      user.books.splice(index, 1)
     }
     users[id] = user
     this.setState({ users: users })
