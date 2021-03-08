@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './UserVoting.css';
 
-const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser }) => {
+const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, voteForBook }) => {
 
   const voteBoards = users.map(user => {
     const bookOptions = bestSellers.map(book => {
       return    <div className="bookVote" key={book.book_details[0].primary_isbn13}>
                   <Link to={`details/${book.book_details[0].title}`} className="previewLink" onClick={() => chooseBook(book.book_details[0].primary_isbn13)}>📖</Link> 
-                  <button className="voteButton">{book.book_details[0].title}</button>
+                  <button className="voteButton" onClick={() => voteForBook(user.id, book.book_details[0].primary_isbn13)}>{book.book_details[0].title}</button>
                 </div>
     })
     if (user.id === currentUser) {

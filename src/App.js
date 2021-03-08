@@ -104,8 +104,17 @@ class App extends Component {
     this.setState({ users: users })
   }
 
-  addUserVote = () => {
-
+  voteForBook = (id, isbn) => {
+    const users = [...this.state.users]
+    const user = {...users[id]}
+    if (!user.books) {
+      user.books = []
+    }
+    if (!user.books.includes(parseInt(isbn))) {
+      user.books.push(parseInt(isbn))
+    }
+    users[id] = user
+    this.setState({ users: users })
   }
 
   render() {
@@ -142,7 +151,8 @@ class App extends Component {
                             updateUsers={this.updateUsers}
                             setUsers={this.setUsers} 
                             changeUser={this.changeUser}
-                            chooseBook={this.chooseBook} /> } />
+                            chooseBook={this.chooseBook}
+                            voteForBook={this.voteForBook} /> } />
           <Route
             exact path="/details/:title"
             render={({ match }) => {
