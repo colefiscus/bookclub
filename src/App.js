@@ -16,6 +16,7 @@ class App extends Component {
       lists: [],
       error: "",
       category: "",
+      currentUser: 0,
       bookDetails: "",
       bestSellers: [],
       usersSet: false,
@@ -83,6 +84,10 @@ class App extends Component {
     this.setState({ usersSet: true })
   }
 
+  changeUser = (id) => {
+    this.setState({ currentUser: id })
+  }
+
   removeDetails = () => {
     this.setState({ bookDetails: "", error: "" })
   }
@@ -100,7 +105,7 @@ class App extends Component {
   }
 
   addUserVote = () => {
-    
+
   }
 
   render() {
@@ -132,11 +137,12 @@ class App extends Component {
                             users={this.state.users}
                             usersSet={this.state.usersSet}
                             bestSellers={this.state.bestSellers}
+                            currentUser={this.state.currentUser}
                             addUsers={this.addUsers}
                             updateUsers={this.updateUsers}
                             setUsers={this.setUsers} 
-                            chooseBook={this.chooseBook} 
-                            removeDetails={this.removeDetails} /> } />
+                            changeUser={this.changeUser}
+                            chooseBook={this.chooseBook} /> } />
           <Route
             exact path="/details/:title"
             render={({ match }) => {

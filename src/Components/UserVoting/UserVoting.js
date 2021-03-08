@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './UserVoting.css';
 
-const UserVoting = ({ users, bestSellers, chooseBook }) => {
+const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser }) => {
 
   const voteBoards = users.map(user => {
     const bookOptions = bestSellers.map(book => {
@@ -11,24 +11,25 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
                   <button className="voteButton">{book.book_details[0].title}</button>
                 </div>
     })
-    if (user.id === 0) {
+    if (user.id === currentUser) {
       return  <section className="voteBoard currentBoard" id={user.id + 1} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
+                <button className="voteCompleteButton" onClick={() => changeVoteBoard(user.id)}>Submit</button>
                 <div></div>
               </section>     
     } else {
       return  <section className="voteBoard" id={user.id + 1} key={user.id}>
                 <h2>{user.name}</h2>
                 {bookOptions}
-                <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
+                <button className="voteCompleteButton" onClick={() => changeVoteBoard(user.id)}>Submit</button>
                 <div className="overlay"></div>
               </section>
     }
   });
 
-  const changeVoteBoard = () => {
+  const changeVoteBoard = (id) => {
+    changeUser(parseInt(id) + 1)
     const allVoteBoards = document.querySelectorAll(".voteBoard")
     const currentBoard = document.querySelector(".currentBoard")
     const nextBoard = document.getElementById(parseInt(currentBoard.id) + 1)
