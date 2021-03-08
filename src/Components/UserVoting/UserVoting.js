@@ -18,7 +18,7 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
                       📖
                   </Link> 
                   <button 
-                    className={user.books && user.books.includes(parseInt(bookIsbn)) ? 
+                    className={user.books && user.books.includes(bookIsbn) ? 
                       `voteButton userVoteForBook user${user.id}_book${bookIsbn}` : 
                       `voteButton user${user.id}_book${bookIsbn}`} 
                     onClick={() => toggleBookVote(user.id, bookIsbn)}>
@@ -52,7 +52,6 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
   });
 
   const toggleBookVote = (id, isbn) => {
-    console.log(isbn)
     const book = document.querySelector(`.user${id}_book${isbn}`);
     book.classList.toggle('userVoteForBook')
     voteForBook(id, isbn)

@@ -94,7 +94,7 @@ class App extends Component {
   }
 
   resetState = () => {
-    this.setState({ bestSellers: [], bookDetails: "", category: "", currentUser: 0, error: "", filteredLists: [], matchBooks: [], users: [], usersSet: false })
+    this.setState({ bestSellers: [], bookDetails: "", category: "", currentUser: 0, error: "", filteredLists: [], matchingBooks: [], users: [], usersSet: false })
   }
 
   removeError = () => {
