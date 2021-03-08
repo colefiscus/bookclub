@@ -16,6 +16,7 @@ const Outcome = ({ matchingBooks }) => {
     return (
       <main>
         {books}
+        <Link to="/">Go Again!</Link>
       </main>
     )
   }
