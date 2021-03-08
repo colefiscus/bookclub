@@ -52,6 +52,7 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
   });
 
   const toggleBookVote = (id, isbn) => {
+    console.log(isbn)
     const book = document.querySelector(`.user${id}_book${isbn}`);
     book.classList.toggle('userVoteForBook')
     voteForBook(id, isbn)

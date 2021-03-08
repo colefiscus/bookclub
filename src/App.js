@@ -64,7 +64,6 @@ class App extends Component {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
         if (typeof data !== 'string') {
-          console.log(data)
           const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
           const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
           const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
@@ -112,12 +111,10 @@ class App extends Component {
     if (!user.books) {
       user.books = []
     }
-    if (!user.books.includes(parseInt(isbn))) {
-      user.books.push(parseInt(isbn))
-    } else if (user.books.includes(parseInt(isbn))) {
-      const index = user.books.indexOf(parseInt(isbn))
-      console.log(index)
-      console.log(user.books)
+    if (!user.books.includes(isbn)) {
+      user.books.push(isbn)
+    } else if (user.books.includes(isbn)) {
+      const index = user.books.indexOf(isbn)
       user.books.splice(index, 1)
     }
     users[id] = user
@@ -133,7 +130,7 @@ class App extends Component {
       return acc.filter(isbn => list.includes(isbn))
     })
     const matchingBooks = this.state.bestSellers.filter(book => {
-      return numbers.includes(parseInt(book.book_details[0].primary_isbn13))
+      return numbers.includes(book.book_details[0].primary_isbn13)
     })
     this.setState({ matchingBooks: matchingBooks })
   }
