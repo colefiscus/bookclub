@@ -2,7 +2,7 @@ import React from 'react';
 import './Outcome.css';
 import { Link } from 'react-router-dom';
 
-const Outcome = ({ matchingBooks }) => {
+const Outcome = ({ matchingBooks, resetState }) => {
   if (matchingBooks.length) {
 
     const books = matchingBooks.map(book => {
@@ -16,7 +16,7 @@ const Outcome = ({ matchingBooks }) => {
     return (
       <main>
         {books}
-        <Link to="/">Go Again!</Link>
+        <Link to="/" onClick={() => resetState()}>Go Again!</Link>
       </main>
     )
   }
@@ -24,7 +24,7 @@ const Outcome = ({ matchingBooks }) => {
     return (
       <main>
         <h2>Dang none of those books matched! Try again?</h2>
-        <Link to="/">Back to Home</Link>
+        <Link to="/" onClick={() => resetState()}>Back to Home</Link>
       </main>
     )
   }

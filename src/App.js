@@ -93,6 +93,10 @@ class App extends Component {
     this.setState({ bookDetails: "", error: "" })
   }
 
+  resetState = () => {
+    this.setState({ bestSellers: [], bookDetails: "", category: "", currentUser: 0, error: "", filteredLists: [], matchBooks: [], users: [], usersSet: false })
+  }
+
   removeError = () => {
     this.setState({ error: '' })
   }
@@ -187,7 +191,8 @@ class App extends Component {
           <Route 
             exact path="/outcome"
             render={() => <Outcome 
-                            matchingBooks={this.state.matchingBooks} />} />
+                            matchingBooks={this.state.matchingBooks}
+                            resetState={this.resetState} />} />
         </>
     )}
   // }
