@@ -22,6 +22,7 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
                 <h2>{user.name}</h2>
                 {bookOptions}
                 <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
+                <div className="overlay"></div>
               </section>
     }
   });
@@ -34,7 +35,9 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
       currentBoard.classList.remove("currentBoard")
       nextBoard.classList.add("currentBoard")
     } else {
-      console.log('thats the end of it then')
+      window.scrollTo(0, 0)
+      const finalSubmitButton = document.querySelector(".finalSubmitButton")
+      finalSubmitButton.classList.remove('hidden')
     }
   }
 
