@@ -7,6 +7,7 @@ import Selection from './Views/Selection/Selection';
 import Preview from './Views/Preview/Preview';
 import Approval from './Views/Approval/Approval';
 import BookInfo from './Views/BookInfo/BookInfo';
+import Outcome from './Views/Outcome/Outcome';
 
 class App extends Component {
   constructor() {
