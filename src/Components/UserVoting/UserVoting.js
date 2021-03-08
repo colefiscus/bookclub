@@ -16,6 +16,7 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
                 <h2>{user.name}</h2>
                 {bookOptions}
                 <button className="voteCompleteButton" onClick={() => changeVoteBoard()}>Submit</button>
+                <div></div>
               </section>     
     } else {
       return  <section className="voteBoard" id={user.id + 1} key={user.id}>
@@ -33,8 +34,12 @@ const UserVoting = ({ users, bestSellers, chooseBook }) => {
     const nextBoard = document.getElementById(parseInt(currentBoard.id) + 1)
     if (currentBoard.id < allVoteBoards.length) {
       currentBoard.classList.remove("currentBoard")
+      currentBoard.lastChild.classList.add("overlay")
       nextBoard.classList.add("currentBoard")
+      nextBoard.lastChild.classList.remove("overlay")
     } else {
+      currentBoard.classList.remove("currentBoard")
+      currentBoard.lastChild.classList.add("overlay")
       window.scrollTo(0, 0)
       const finalSubmitButton = document.querySelector(".finalSubmitButton")
       finalSubmitButton.classList.remove('hidden')
