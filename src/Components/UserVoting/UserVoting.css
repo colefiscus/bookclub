@@ -17,6 +17,10 @@
   background-color: blueviolet;
 }
 
+.userVoteForBook {
+  background-color: darkgoldenrod;
+}
+
 .overlay {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);

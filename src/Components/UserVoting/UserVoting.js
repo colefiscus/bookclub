@@ -8,7 +8,7 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
     const bookOptions = bestSellers.map(book => {
       return    <div className="bookVote" key={book.book_details[0].primary_isbn13}>
                   <Link to={`details/${book.book_details[0].title}`} className="previewLink" onClick={() => chooseBook(book.book_details[0].primary_isbn13)}>📖</Link> 
-                  <button className="voteButton" onClick={() => voteForBook(user.id, book.book_details[0].primary_isbn13)}>{book.book_details[0].title}</button>
+                  <button className={`voteButton user${user.id}_book${book.book_details[0].primary_isbn13}`} onClick={() => toggleBookVote(user.id, book.book_details[0].primary_isbn13)}>{book.book_details[0].title}</button>
                 </div>
     })
     if (user.id === currentUser) {
@@ -27,6 +27,12 @@ const UserVoting = ({ users, bestSellers, currentUser, chooseBook, changeUser, v
               </section>
     }
   });
+
+  const toggleBookVote = (id, isbn) => {
+    const book = document.querySelector(`.user${id}_book${isbn}`);
+    book.classList.toggle('userVoteForBook')
+    voteForBook(id, isbn)
+  }
 
   const changeVoteBoard = (id) => {
     changeUser(parseInt(id) + 1)
