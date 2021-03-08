@@ -3,10 +3,7 @@ import './BookInfo.css';
 import { Link } from 'react-router-dom';
 
 const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
-  console.log(currentBook)
-  console.log(bookDetails)
   if (bookDetails) {
-
     let description;
     if (!bookDetails[1].description) {
       description = "No summary available."

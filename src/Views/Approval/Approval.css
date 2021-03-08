@@ -6,7 +6,19 @@
   height: 90vh;
 }
 
-.allVoteBoards {
+.votingScreen {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.finalSubmitButton {
+  width: 20%;
+  align-self: center;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.hidden {
+  display: none;
 }

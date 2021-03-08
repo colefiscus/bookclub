@@ -1,10 +1,31 @@
 .voteBoard {
   text-align: center;
   display: grid;
-  grid-template-rows: repeat(11, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   border: 3px solid purple;
   margin: 1%;
+  height: 51em;
   width: 30%;
+}
+
+.allVoteBoards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.currentBoard {
+  background-color: blueviolet;
+}
+
+.userVoteForBook {
+  background-color: darkgoldenrod;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 30%;
+  height: 51em;
 }
 
 .bookVote {
