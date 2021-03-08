@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Approval.css';
 import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
 import UserNames from '../../Components/UserNames/UserNames';
@@ -25,7 +26,13 @@ const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateU
   } else if (usersSet === true) {
     return (
       <main className="votingScreen">
-        <button className="finalSubmitButton hidden" onClick={() => matchBooks()}>FINAL SUBMIT</button>
+        <Link to="/outcome">
+          <button 
+            className="finalSubmitButton hidden" 
+            onClick={() => matchBooks()}>
+              FINAL SUBMIT
+          </button>
+        </Link>
         <UserVoting users={users} bestSellers={bestSellers} currentUser={currentUser} chooseBook={chooseBook} changeUser={changeUser} voteForBook={voteForBook} />
       </main>
     )
