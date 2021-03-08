@@ -4,7 +4,7 @@ import UserAmountForm from '../../Components/UserAmountForm/UserAmountForm';
 import UserNames from '../../Components/UserNames/UserNames';
 import UserVoting from '../../Components/UserVoting/UserVoting';
 
-const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateUsers, setUsers, changeUser, chooseBook, voteForBook }) => {
+const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateUsers, setUsers, changeUser, chooseBook, voteForBook, matchBooks }) => {
   if (!users.length) {
     return (
       <section className="userForm">
@@ -25,7 +25,7 @@ const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateU
   } else if (usersSet === true) {
     return (
       <main className="votingScreen">
-        <button className="finalSubmitButton hidden">FINAL SUBMIT</button>
+        <button className="finalSubmitButton hidden" onClick={() => matchBooks()}>FINAL SUBMIT</button>
         <UserVoting users={users} bestSellers={bestSellers} currentUser={currentUser} chooseBook={chooseBook} changeUser={changeUser} voteForBook={voteForBook} />
       </main>
     )

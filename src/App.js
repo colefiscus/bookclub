@@ -20,6 +20,7 @@ class App extends Component {
       bookDetails: "",
       bestSellers: [],
       usersSet: false,
+      matchingBooks: [],
       filteredLists: []
     }
   }
@@ -122,6 +123,20 @@ class App extends Component {
     this.setState({ users: users })
   }
 
+  matchBooks = () => {
+    const bookChoices = []
+    this.state.users.forEach(user => {
+      bookChoices.push(user.books)
+    })
+    const numbers =  bookChoices.reduce((acc, list) => {
+      return acc.filter(isbn => list.includes(isbn))
+    })
+    const matchingBooks = this.state.bestSellers.filter(book => {
+      return numbers.includes(parseInt(book.book_details[0].primary_isbn13))
+    })
+    this.setState({ matchingBooks: matchingBooks })
+  }
+
   render() {
     // if (this.state.error) {
     //   return (
@@ -157,7 +172,8 @@ class App extends Component {
                             setUsers={this.setUsers} 
                             changeUser={this.changeUser}
                             chooseBook={this.chooseBook}
-                            voteForBook={this.voteForBook} /> } />
+                            voteForBook={this.voteForBook}
+                            matchBooks={this.matchBooks} /> } />
           <Route
             exact path="/details/:title"
             render={({ match }) => {
