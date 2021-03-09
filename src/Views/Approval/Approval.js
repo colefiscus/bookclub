@@ -26,7 +26,7 @@ const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateU
   } else if (usersSet === true) {
     return (
       <main className="votingScreen">
-        <Link to="/outcome">
+        <Link className="outcome" to="/outcome">
           <button 
             className="finalSubmitButton hidden" 
             onClick={() => matchBooks()}>

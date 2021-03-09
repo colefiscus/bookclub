@@ -1,31 +1,43 @@
+.votingScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .voteBoard {
   text-align: center;
   display: grid;
-  grid-template-rows: repeat(12, 1fr);
-  border: 3px solid purple;
+  border: 3px groove black;
   margin: 1%;
-  height: 51em;
   width: 30%;
+}
+
+.voteBoard h2 {
+  font-size: xx-large;
 }
 
 .allVoteBoards {
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 .currentBoard {
-  background-color: blueviolet;
+  background-color: rgb(148, 100, 40);
 }
 
 .userVoteForBook {
-  background-color: darkgoldenrod;
+  background-color: rgb(125, 85, 36);
 }
 
 .overlay {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.98);
   width: 30%;
-  height: 51em;
+  height: 54em;
 }
 
 .bookVote {
@@ -34,7 +46,13 @@
   display: flex;
 }
 
+.voteCompleteButton {
+  margin: 0;
+}
+
 .voteButton {
+  font-family: 'Oswald';
+  font-size: 24px;
   width: 85%;
   height: 100%;
   padding: 0;
@@ -42,7 +60,7 @@
 }
 
 .previewLink {
-  background-color: antiquewhite;
+  background-color: silver;
   border: 1px solid black;
   text-decoration: none;
   display: flex;
@@ -52,4 +70,16 @@
   height: 100%;
   padding: 0;
   margin: 0;
+}
+
+.outcome {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.finalSubmitButton {
+  width: 40%;
 }

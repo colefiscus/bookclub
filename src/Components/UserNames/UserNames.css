@@ -1,7 +1,11 @@
 .userNamesForm {
   font-family: 'Oswald';
-  width: 60%;
+  width: 80%;
   text-align: center;
+}
+
+.userNamesForm button {
+  width: 80%;
 }
 
 .nameInputLabel {
@@ -18,5 +22,5 @@
 
 .nameInput {
   margin: 3%;
-  width: 80%;
+  width: 50%;
 }
