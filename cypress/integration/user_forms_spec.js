@@ -33,5 +33,22 @@ describe('User Selection and Book Details', () => {
       .get('input[class=nameInput]').eq(1).type('Barrack')
       .get('input[class=nameInput]:last').type('Elizabeth')
       .get('button').click()
+    cy
+      .get('section:first').children('h2').should('contain', 'Bernie')
+      .get('section:last').children('h2').should('contain', 'Elizabeth')
+  })
+
+  it.only('Should show a list of books with a preview link to show details', () => {
+    cy
+      .get('input').type(3)
+      .get('button').click()
+    cy
+      .get('input[class=nameInput]:first').type('Bernie')
+      .get('input[class=nameInput]').eq(1).type('Barrack')
+      .get('input[class=nameInput]:last').type('Elizabeth')
+      .get('button').click()
+    cy
+      .get('section:first').children('div[class=bookVote]').should('have.length', 10)
+      .get('div[class=bookVote]').eq(2).children('button').should('contain', 'THE MIDNIGHT LIBRARY')
   })
 })
