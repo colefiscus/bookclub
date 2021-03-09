@@ -13,7 +13,13 @@ describe('User Voting', () => {
       .get('button').click()
   })
 
-  it.only('Should tell users which books they matched on', () => {
+  afterEach(() => {
+    cy
+      .get('a').click()
+      .get('h2:first').should('contain', 'Step 1: Browse Categories')
+  })
+
+  it('Should tell users which books they matched on', () => {
     cy
       .get('section:first').children('div[class=bookVote]').eq(0).click()
       .get('section:first').children('div[class=bookVote]').eq(1).click()
@@ -39,5 +45,23 @@ describe('User Voting', () => {
       .get('button[class=finalSubmitButton]').click()
       .get('h2').should('have.length', 3)
       .get('h2:first').should('contain', 'THE MIDNIGHT LIBRARY')
+  })
+
+  it.only('Should tell users when there are no matching books', () => {
+    cy
+      .get('section:first').children('div[class=bookVote]').eq(0).click()
+      .get('section:first').children('div[class=bookVote]').eq(1).click()
+      .get('button[class=voteCompleteButton]:first').click()
+    cy
+      .get('section').eq(1).children('div[class=bookVote]').eq(0).click()
+      .get('section').eq(1).children('div[class=bookVote]').eq(8).click()
+      .get('button[class=voteCompleteButton]').eq(1).click()
+    cy
+      .get('section:last').children('div[class=bookVote]').eq(2).click()
+      .get('section:last').children('div[class=bookVote]').eq(8).click()
+      .get('button[class=voteCompleteButton]:last').click()
+    cy
+      .get('button[class=finalSubmitButton]').click()
+      .get('h2').should('contain', 'Dang none of those books matched! Try again?')
   })
 })
