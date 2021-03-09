@@ -22,13 +22,18 @@ class App extends Component {
       bestSellers: [],
       usersSet: false,
       matchingBooks: [],
-      filteredLists: []
+      filteredLists: [],
+      secondaryError: ''
     }
   }
 
   componentDidMount = () => {
     return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: error })
+      })
   }
 
   handleError(result) {
@@ -57,25 +62,32 @@ class App extends Component {
   chooseCategory = (category) => {
     getData(`https://api.nytimes.com/svc/books/v3/lists.json?list=${category}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
       .then(data => this.setState({ bestSellers: data.results.splice(0, 10), category: category }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: error })
+      })
     this.setState({ category: category })
   }
 
   chooseBook = (isbn) => {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
-        if (typeof data !== 'string') {
           const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
           const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
           const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
           Promise.all([apiData, reviews, workData])
             .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
-            .catch(error => console.log(error))
-        } else {
-          console.log(data)
-          this.setState({ error: data})
-        }
+            .catch(error => {
+              console.log(error)
+              this.setState({ secondaryError: error })
+            })
+        })
+      .catch(error => {
+        console.log(error)
+        this.setState({ secondaryError: error })
       })
-  }
+    }
+  
 
   addUsers = (users) => {
     this.setState({ users: users })
@@ -139,15 +151,15 @@ class App extends Component {
     this.setState({ matchingBooks: matchingBooks })
   }
 
-  render() {
-    // if (this.state.error) {
-    //   return (
-    //     <main>
-    //       <h2>{this.state.error}</h2>
-    //       <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
-    //     </main>
-    //   )
-    // } else {
+  render = () => {
+    if (this.state.error) {
+      return (
+        <main>
+          <h2>{this.state.error}</h2>
+          {/* <Link to="/" onClick={() => this.removeError()}>Return</Link> */}
+        </main>
+      )
+    } else {
       return (
         <>
           <Header />
@@ -186,7 +198,7 @@ class App extends Component {
               return <BookInfo 
                         currentBook={bookDetailsToRender} 
                         bookDetails={this.state.bookDetails} 
-                        error={this.state.error} 
+                        secondaryError={this.state.secondaryError} 
                         removeDetails={this.removeDetails} /> } }/>
           <Route 
             exact path="/outcome"
@@ -195,7 +207,7 @@ class App extends Component {
                             resetState={this.resetState} />} />
         </>
     )}
-  // }
+  }
 }
 
 export default App;

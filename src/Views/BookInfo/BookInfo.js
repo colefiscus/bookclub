@@ -2,15 +2,15 @@ import React from 'react';
 import './BookInfo.css';
 import { Link } from 'react-router-dom';
 
-const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
+const BookInfo = ({ currentBook, bookDetails, secondaryError, removeDetails }) => {
   if (bookDetails) {
     let description;
-    if (!bookDetails[1].description) {
+    if (!bookDetails[2].description) {
       description = "No summary available."
-    } else if (typeof bookDetails[1].description === 'string') {
-      description = bookDetails[1].description
-    } else if (bookDetails[1].description.value) {
-      description = bookDetails[1].description.value
+    } else if (typeof bookDetails[2].description === 'string') {
+      description = bookDetails[2].description
+    } else if (bookDetails[2].description.value) {
+      description = bookDetails[2].description.value
     }
 
     let reviews;
@@ -48,7 +48,7 @@ const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
         </div>
       </main>
     )
-  } else if (currentBook && error) {
+  } else if (currentBook && secondaryError) {
     return (
         <main>
           <Link to="/approval" onClick={() => removeDetails()}>Back to Voting</Link>
