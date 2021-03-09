@@ -27,8 +27,11 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
+    return getData("https://api.nytimes.com/svc/books/v3/lists/name.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
+      .catch(error => {
+        this.setState({ error: error })
+      })
   }
 
   handleError(result) {
@@ -143,14 +146,14 @@ class App extends Component {
   }
 
   render = () => {
-    // if (this.state.error) {
-    //   return (
-    //     <main>
-    //       <h2>{this.state.error}</h2>
-    //       <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
-    //     </main>
-    //   )
-    // } else {
+    if (this.state.error) {
+      return (
+        <main>
+          <h2>{this.state.error}</h2>
+          <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
+        </main>
+      )
+    } else {
       return (
         <>
           <Header />
@@ -198,7 +201,7 @@ class App extends Component {
                             resetState={this.resetState} />} />
         </>
     )}
-  // }
+  }
 }
 
 export default App;
