@@ -1,0 +1,62 @@
+.bookDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 90vh;
+}
+
+.justCurrentBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 90vh;
+}
+
+.bookDetailsText {
+  min-height: 80vh;
+  width: 60%;
+  border: 4px solid peru;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2%;
+}
+
+.bookDetailsText p, h3, h2 {
+  margin: 1%;
+}
+
+.bookCoverAndLink {
+  min-height: 80vh;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.toVotingLink {
+  margin: 3%;
+  text-decoration: none;
+  font-size: xx-large;
+  color: black;
+}
+
+.nytReview {
+  margin-left: 1%;
+}
+
+.loading {
+  font-size: xx-large;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
