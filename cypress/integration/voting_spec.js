@@ -47,7 +47,7 @@ describe('User Voting', () => {
       .get('h2:first').should('contain', 'THE MIDNIGHT LIBRARY')
   })
 
-  it.only('Should tell users when there are no matching books', () => {
+  it('Should tell users when there are no matching books', () => {
     cy
       .get('section:first').children('div[class=bookVote]').eq(0).click()
       .get('section:first').children('div[class=bookVote]').eq(1).click()

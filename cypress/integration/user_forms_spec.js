@@ -20,7 +20,7 @@ describe('User Selection and Book Details', () => {
     cy
       .get('input[class=nameInput]:first').type('Bernie')
       .get('input[class=nameInput]').eq(1).type('Barrack')
-      .get('button').click().wait(7000)
+      .get('button').click().wait(3000)
       .get('form').children('div').should('have.length', 3)
   })
 
@@ -52,7 +52,7 @@ describe('User Selection and Book Details', () => {
       .get('div[class=bookVote]').eq(2).children('button').should('contain', 'THE MIDNIGHT LIBRARY')
   })
 
-  it.only('Should show extended book details after clicking a preview link', () => {
+  it('Should show extended book details after clicking a preview link', () => {
     cy
       .get('input').type(3)
       .get('button').click()
@@ -62,7 +62,7 @@ describe('User Selection and Book Details', () => {
       .get('input[class=nameInput]:last').type('Elizabeth')
       .get('button').click()
     cy
-      .get('div[class=bookVote]').eq(2).children('a').click()
+      .get('div[class=bookVote]').eq(2).children('a').click().wait(10000)
       .get('h2:first').should('contain', 'THE MIDNIGHT LIBRARY')
       .get('img').should('have.attr', 'src', 'https://covers.openlibrary.org/b/id/10313767-L.jpg')
     cy
