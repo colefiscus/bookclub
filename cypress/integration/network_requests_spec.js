@@ -3,7 +3,7 @@ describe('Network Requests and Error Handling', () => {
     cy.fixture('mock_categories')
       .then((categories) => {
         cy.intercept('https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH', {
-          status: 201,
+          statusCode: 201,
           body: categories
         })
       })
@@ -19,7 +19,7 @@ describe('Network Requests and Error Handling', () => {
     cy.fixture('mock_preview_list')
       .then((bookPreviews) => {
         cy.intercept('https://api.nytimes.com/svc/books/v3/lists.json?list=cookbooks-for-racoons&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH', {
-          status: 201, 
+          statusCode: 201, 
           body: bookPreviews
         })
       })

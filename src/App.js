@@ -156,7 +156,7 @@ class App extends Component {
       return (
         <main>
           <h2>{this.state.error}</h2>
-          <Link to="/" onClick={() => this.removeError()}>Return</Link>
+          {/* <Link to="/" onClick={() => this.removeError()}>Return</Link> */}
         </main>
       )
     } else {
