@@ -27,6 +27,4 @@ describe('Network Requests and Error Handling', () => {
       .get('article:last').children('a:first').click()
       .get('article:first').children('h3').should('contain', 'Garbage Can Delights')
   })
-
-  it.only('')
 })

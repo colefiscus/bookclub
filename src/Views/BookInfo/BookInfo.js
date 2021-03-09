@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const BookInfo = ({ currentBook, bookDetails, secondaryError, removeDetails }) => {
   if (bookDetails) {
     let description;
-    if (!bookDetails[1].description) {
+    if (!bookDetails[2].description) {
       description = "No summary available."
-    } else if (typeof bookDetails[1].description === 'string') {
-      description = bookDetails[1].description
-    } else if (bookDetails[1].description.value) {
-      description = bookDetails[1].description.value
+    } else if (typeof bookDetails[2].description === 'string') {
+      description = bookDetails[2].description
+    } else if (bookDetails[2].description.value) {
+      description = bookDetails[2].description.value
     }
 
     let reviews;
