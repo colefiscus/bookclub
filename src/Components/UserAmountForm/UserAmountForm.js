@@ -30,6 +30,7 @@ class UserAmountForm extends Component {
   render() {
     return (
       <form>
+        <h2 className="stepTwo">Step 2: Join In</h2>
         <label>How many people?</label>
         <input 
           type="number" 

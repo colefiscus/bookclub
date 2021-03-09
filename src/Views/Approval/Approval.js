@@ -26,6 +26,7 @@ const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateU
   } else if (usersSet === true) {
     return (
       <main className="votingScreen">
+        <h2 className="stepThree">Step 3: Vote Individually</h2>
         <Link className="outcome" to="/outcome">
           <button 
             className="finalSubmitButton hidden" 

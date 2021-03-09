@@ -20,6 +20,7 @@ const UserNames = ({ users, updateUsers, setUsers }) => {
 
   return (
     <form className="userNamesForm" onSubmit={(event) => setUserNames(event)}>
+      <h2 className="stepTwo">Step 2: Join In</h2>
       {userNameInputs}
       <button>SUBMIT</button>
     </form>
