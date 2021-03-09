@@ -62,6 +62,6 @@ describe('User Voting', () => {
       .get('button[class=voteCompleteButton]:last').click()
     cy
       .get('button[class=finalSubmitButton]').click()
-      .get('h2').should('contain', 'Dang none of those books matched! Try again?')
+      .get('h2').should('contain', 'None of your books matched. Try again?')
   })
 })

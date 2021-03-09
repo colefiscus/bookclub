@@ -66,7 +66,7 @@ describe('User Selection and Book Details', () => {
       .get('h2:first').should('contain', 'THE MIDNIGHT LIBRARY')
       .get('img').should('have.attr', 'src', 'https://covers.openlibrary.org/b/id/10313767-L.jpg')
     cy
-      .get('a:first').click()
+      .get('a[class=toVotingLink]').click()
       .get('section:first').children('h2').should('contain', 'Bernie')
   })
 })
