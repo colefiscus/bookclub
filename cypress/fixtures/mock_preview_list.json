@@ -1,0 +1,37 @@
+{
+  "status": "OK",
+  "results": [
+    {
+      "list_name": "Cookbooks For Racoons",
+      "display_name": "Cookbooks For Racoons",
+      "rank": 1,
+      "rank_last_week": 1,
+      "weeks_on_list": 2127,
+      "book_details": [
+        {
+          "title": "Garbage Can Delights",
+          "description": "Garbage companies don't want you to know this one trick.",
+          "contributor": "by Rosco the Racoon",
+          "author": "Rosco the Racoon",
+          "primary_isbn13": "9780142414934"
+        }
+      ]
+    },
+      {
+      "list_name": "Cookbooks For Racoons",
+      "display_name": "Cookbooks For Racoons",
+      "rank": 2,
+      "rank_last_week": 2,
+      "weeks_on_list": 4,
+      "book_details": [
+        {
+          "title": "Pond Sushi",
+          "description": "Make the most out of unedible pond fish.",
+          "contributor": "by Tiny",
+          "author": "Tiny 'Mittens' Boops",
+          "primary_isbn13": "9780142402511"
+        }
+      ]
+    }
+  ]
+}
