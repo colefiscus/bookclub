@@ -3,8 +3,8 @@ import './UserNames.css';
 
 const UserNames = ({ users, updateUsers, setUsers }) => {
   const userNameInputs = users.map(user => {
-    return  <div key={user.id}>
-              <label>User {user.id + 1} Name</label>
+    return  <div className="nameInputLabel" key={user.id}>
+              <label className="nameLabel">User {user.id + 1} Name</label>
               <input 
                 required
                 className="nameInput" 
@@ -19,7 +19,8 @@ const UserNames = ({ users, updateUsers, setUsers }) => {
   }
 
   return (
-    <form onSubmit={(event) => setUserNames(event)}>
+    <form className="userNamesForm" onSubmit={(event) => setUserNames(event)}>
+      <h2 className="stepTwo">Step 2: Join In</h2>
       {userNameInputs}
       <button>SUBMIT</button>
     </form>

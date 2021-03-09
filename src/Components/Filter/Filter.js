@@ -7,7 +7,8 @@ const Filter = ({ filterBooks }) => {
     <form className="listFilters">
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="All" 
             type="radio" 
@@ -17,7 +18,8 @@ const Filter = ({ filterBooks }) => {
       </div>
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="Fiction" 
             type="radio" 
@@ -27,7 +29,8 @@ const Filter = ({ filterBooks }) => {
       </div>
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="Nonfiction" 
             type="radio" 
@@ -37,7 +40,8 @@ const Filter = ({ filterBooks }) => {
       </div>
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="Misc" 
             type="radio" 
@@ -47,7 +51,8 @@ const Filter = ({ filterBooks }) => {
       </div>
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="Young Adult" 
             type="radio" 
@@ -57,7 +62,8 @@ const Filter = ({ filterBooks }) => {
       </div>
       <div>
         <label>
-          <input 
+          <input
+            className="filterInput" 
             name="filter" 
             value="Children" 
             type="radio" 

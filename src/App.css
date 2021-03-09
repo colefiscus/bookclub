@@ -1,13 +1,20 @@
 html {
   height: fit-content;
+  min-height: 100vh;
   margin: 0;
 }
 
 body {
   height: fit-content;
+  min-height: 100vh;
   margin: 0;
 }
 
 #root {
   height: fit-content;
+  min-height: 100vh;
+}
+
+* {
+  font-family: 'Petit Formal Script';
 }

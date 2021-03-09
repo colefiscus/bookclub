@@ -30,12 +30,14 @@ class UserAmountForm extends Component {
   render() {
     return (
       <form>
-        <label>How many readers?</label>
+        <h2 className="stepTwo">Step 2: Join In</h2>
+        <label>How many people?</label>
         <input 
           type="number" 
           name="userAmount" 
           value={this.state.userAmount} 
           min="2" 
+          placeholder="Must be a number..."
           onChange={(event) => this.addUserAmount(event)} />
         <button onClick={(event) => this.createUsers(event)}>
           Next

@@ -2,7 +2,8 @@
   margin: 2%;
   width: 90%;
   height: 3em;
-  border: 3px solid green;
+  border: 2px solid burlywood;
+  background-color: antiquewhite;
   text-align: center;
   display: flex;
   justify-content: space-evenly;
@@ -10,5 +11,10 @@
 }
 
 .listFilters label {
-  font-size: larger;
+  font-family: 'Oswald';
+  font-size: x-large;
+}
+
+.filterInput {
+  width: auto;
 }
