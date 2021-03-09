@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 import getData from './util';
 import Header from './Components/Header/Header';
@@ -163,6 +163,7 @@ class App extends Component {
       return (
         <>
           <Header />
+          <Switch>
           <Route
             exact path="/" 
             render={() => <Selection
@@ -205,6 +206,10 @@ class App extends Component {
             render={() => <Outcome 
                             matchingBooks={this.state.matchingBooks}
                             resetState={this.resetState} />} />
+          <Route 
+            path='/'
+            render={() => <h2 className="fourOhFour">404 This page doesn't exist :'(</h2>} />
+          </Switch>
         </>
     )}
   }
