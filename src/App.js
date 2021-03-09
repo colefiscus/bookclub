@@ -79,7 +79,7 @@ class App extends Component {
             .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
             .catch(error => {
               console.log(error)
-              // this.setState({ secondaryError: error })
+              this.setState({ secondaryError: error })
             })
         })
       .catch(error => {
