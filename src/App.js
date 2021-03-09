@@ -63,19 +63,22 @@ class App extends Component {
   chooseBook = (isbn) => {
     getData(`https://openlibrary.org/isbn/${isbn}.json`)
       .then(data => {
-        if (typeof data !== 'string') {
           const apiData = getData(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
           const reviews = getData(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
           const workData = getData(`https://pacific-caverns-07550.herokuapp.com/https://openlibrary.org${data.works[0].key}.json`)
           Promise.all([apiData, reviews, workData])
             .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
-            .catch(error => console.log(error))
-        } else {
-          console.log(data)
-          this.setState({ error: data})
-        }
+            .catch(error => {
+              console.log(error)
+              this.setState({ error: error })
+            })
+        })
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: error })
       })
-  }
+    }
+  
 
   addUsers = (users) => {
     this.setState({ users: users })
@@ -139,7 +142,7 @@ class App extends Component {
     this.setState({ matchingBooks: matchingBooks })
   }
 
-  render() {
+  render = () => {
     // if (this.state.error) {
     //   return (
     //     <main>
