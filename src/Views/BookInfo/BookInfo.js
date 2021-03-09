@@ -2,7 +2,7 @@ import React from 'react';
 import './BookInfo.css';
 import { Link } from 'react-router-dom';
 
-const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
+const BookInfo = ({ currentBook, bookDetails, secondaryError, removeDetails }) => {
   if (bookDetails) {
     let description;
     if (!bookDetails[1].description) {
@@ -48,7 +48,7 @@ const BookInfo = ({ currentBook, bookDetails, error, removeDetails }) => {
         </div>
       </main>
     )
-  } else if (currentBook && error) {
+  } else if (currentBook && secondaryError) {
     return (
         <main>
           <Link to="/approval" onClick={() => removeDetails()}>Back to Voting</Link>

@@ -22,14 +22,16 @@ class App extends Component {
       bestSellers: [],
       usersSet: false,
       matchingBooks: [],
-      filteredLists: []
+      filteredLists: [],
+      secondaryError: ''
     }
   }
 
   componentDidMount = () => {
-    return getData("https://api.nytimes.com/svc/books/v3/lists/name.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
+    return getData("https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH")
       .then(data => this.setState({ lists: data.results }))
       .catch(error => {
+        console.log(error)
         this.setState({ error: error })
       })
   }
@@ -60,6 +62,10 @@ class App extends Component {
   chooseCategory = (category) => {
     getData(`https://api.nytimes.com/svc/books/v3/lists.json?list=${category}&api-key=obrhAVJmNNtUdhs3RSbGr7Shq6cwxtyH`)
       .then(data => this.setState({ bestSellers: data.results.splice(0, 10), category: category }))
+      .catch(error => {
+        console.log(error)
+        this.setState({ error: error })
+      })
     this.setState({ category: category })
   }
 
@@ -73,12 +79,12 @@ class App extends Component {
             .then((details) => this.setState({ bookDetails: [details[0][`ISBN:${isbn}`], details[1], details[2]] }))
             .catch(error => {
               console.log(error)
-              this.setState({ error: error })
+              // this.setState({ secondaryError: error })
             })
         })
       .catch(error => {
         console.log(error)
-        this.setState({ error: error })
+        this.setState({ secondaryError: error })
       })
     }
   
@@ -150,7 +156,7 @@ class App extends Component {
       return (
         <main>
           <h2>{this.state.error}</h2>
-          <Link to="/approval" onClick={() => this.removeError()}>Return</Link>
+          <Link to="/" onClick={() => this.removeError()}>Return</Link>
         </main>
       )
     } else {
@@ -192,7 +198,7 @@ class App extends Component {
               return <BookInfo 
                         currentBook={bookDetailsToRender} 
                         bookDetails={this.state.bookDetails} 
-                        error={this.state.error} 
+                        secondaryError={this.state.secondaryError} 
                         removeDetails={this.removeDetails} /> } }/>
           <Route 
             exact path="/outcome"

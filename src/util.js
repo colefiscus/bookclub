@@ -4,9 +4,9 @@ const getData = (url, options) => {
       if (response.ok) {
         return response.json()
       } else if (response.status === 404) {
-        return Promise.reject("404 Error - So sorry, that page doesn't seem to exist.")
+        return Promise.reject("404 Error - Sorry, that page does not seem to exist.")
       } else {
-        return Promise.reject(`${response.status} Error - So sorry, something seems to have gone wrong. Please try again later or contact the developer if the problem persists.`)
+        return Promise.reject(`${response.status} Error - Sorry, something seems to have gone wrong. Please try again later or contact the developer if the problem persists.`)
       }
     });
 }
