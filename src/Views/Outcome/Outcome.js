@@ -7,24 +7,23 @@ const Outcome = ({ matchingBooks, resetState }) => {
 
     const books = matchingBooks.map(book => {
       return (
-        <section key={book.book_details[0].primary_isbn13}>
-          <h2>{book.book_details[0].title}</h2>
-        </section>
+        <h2 key={book.book_details[0].primary_isbn13}>{book.book_details[0].title}</h2>
       )
     })
 
     return (
-      <main>
+      <main className="votingOutcome">
+        <h1>Matching Books:</h1>
         {books}
-        <Link to="/" onClick={() => resetState()}>Go Again!</Link>
+        <Link className="restartLink" to="/" onClick={() => resetState()}>Go Again!</Link>
       </main>
     )
   }
   else {
     return (
-      <main>
-        <h2>Dang none of those books matched! Try again?</h2>
-        <Link to="/" onClick={() => resetState()}>Back to Home</Link>
+      <main className="votingOutcome">
+        <h2>None of your books matched. Try again?</h2>
+        <Link to="/" onClick={() => resetState()}>Start Again</Link>
       </main>
     )
   }
