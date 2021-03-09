@@ -8,20 +8,20 @@ import UserVoting from '../../Components/UserVoting/UserVoting';
 const Approval = ({ users, usersSet, bestSellers, currentUser, addUsers, updateUsers, setUsers, changeUser, chooseBook, voteForBook, matchBooks }) => {
   if (!users.length) {
     return (
-      <section className="userForm">
+      <main className="userForm">
         <UserAmountForm
           users={users}
           addUsers={addUsers} />
-      </section>
+      </main>
     )
   } else if (users.length && usersSet === false) {
     return (
-      <section>
+      <main className="userNames">
         <UserNames
           users={users}
           updateUsers={updateUsers}
           setUsers={setUsers} />
-      </section>
+      </main>
     )
   } else if (usersSet === true) {
     return (

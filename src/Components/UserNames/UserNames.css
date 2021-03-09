@@ -1,0 +1,22 @@
+.userNamesForm {
+  font-family: 'Oswald';
+  width: 60%;
+  text-align: center;
+}
+
+.nameInputLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nameLabel {
+  width: 20%;
+  font-family: 'Oswald';
+  font-size: x-large;
+}
+
+.nameInput {
+  margin: 3%;
+  width: 80%;
+}
