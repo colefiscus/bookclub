@@ -3,7 +3,7 @@ Turing Mod 3 Niche Audience Project
 
 #### ----- **For Scott and/or Leta** -----
 
-I think it's fair to say I bit off more than I could chew for this project. I just wanted to add some context that I've been working hard since our kickoff and I have still yet to approach some essential things like responsive design, accessibility, and keeping an updated project board. I know those things are vital and I am going to continue to work on them until I can safely delete this message. 
+I think it's fair to say I bit off more than I could chew for this project. I just wanted to add some context that I've been working hard since our kickoff and I have still yet to approach some essential things like responsive design, accessibility, and keeping an updated project board. I know those things are essential and I am going to continue to work on them until I can safely delete this message. 
 
 ## Overview
 
@@ -40,17 +40,30 @@ To add more features to this project, or to simply view the code in action...
     - Currently, there is one test in `routes_spec.js` that seems to randomly fail and the problem has yet to be identified. The test does pass when performed by itself.
 
 ## App in Action
-#### Main View - Enter & Using Previews
+#### Browse Categories
 
+![Categories](https://media.giphy.com/media/YapIv4cv80QE9woPP9/giphy.gif)
 
+#### User Input
 
-#### Main View - Date Input
+![User Input](https://media.giphy.com/media/XDNAHNXu2Qe2yowhBS/giphy.gif)
 
+#### Voting
 
+![Voting](https://media.giphy.com/media/aDyA4X7GVqhEsAshn2/giphy.gif)
+
+#### Book Details
+
+![Book Details](https://media.giphy.com/media/V8zXzihqdlXbP3d5eF/giphy.gif)
+
+#### Match Books
+
+![Match Books](https://media.giphy.com/media/vMIm64AEKnhmzcdMpD/giphy.gif)
 
 ## Current Issues
 
 - Currently the app is not fully responsive - this is item one on the agenda.
+- There are two endpoints that return a response that did not allow access directly. I used a proxy server through Heroku when retrieving book details from the 'voting boards'. After not using the server for longer than 30 minutes goes to sleep so the first time waking it up takes about 10 seconds to load the book details. This only happens the first time.
 - Router is having difficulties when navigating between previews and the book details pages, especially when using the browser back button.
 - There should be some options for users to return to previous screens more easily in case of mistakes.
    
