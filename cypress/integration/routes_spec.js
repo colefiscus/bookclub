@@ -7,11 +7,15 @@ describe('Routes', () => {
     cy.url().should('include', '3000/')
   })
 
-  it.only('Should show the preview URL when clicking on a category', () => {
+  it('Should show the preview URL when clicking on a category', () => {
     cy
       .get('article:first').children('a:first').click()
       .url().should('include', 'preview/combined-print-and-e-book-fiction')
   })
 
-  it
+  it('Should show the approval URL when selecting a category', () => {
+    cy
+      .get('article:first').children('a:last').click()
+      .url().should('include', '/approval')
+  })
 })
