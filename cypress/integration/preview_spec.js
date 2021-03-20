@@ -1,6 +1,6 @@
 describe("Selection", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000').wait(1500)
+    cy.visit('https://bookclubbuddy.herokuapp.com/').wait(1500)
   })
 
   it('Should show a list of categories on page load', () => {
