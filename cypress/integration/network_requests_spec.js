@@ -8,7 +8,7 @@ describe('Network Requests and Error Handling', () => {
         })
       })
     cy
-    .visit('http://localhost:3000').wait(1500)
+    .visit('https://bookclubbuddy.herokuapp.com/').wait(1500)
   })
 
   it('Should retrieve categories on page load', () => {
