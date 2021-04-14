@@ -1,9 +1,6 @@
 # BookClub
+
 Turing Mod 3 Niche Audience Project
-
-#### ----- **For Scott and/or Leta** -----
-
-I think it's fair to say I bit off more than I could chew for this project. I just wanted to add some context that I've been working hard since our kickoff and I have still yet to approach some essential things like responsive design, accessibility, and keeping an updated project board. I know those things are essential and I am going to continue to work on them until I can safely delete this message. 
 
 ## Overview
 
