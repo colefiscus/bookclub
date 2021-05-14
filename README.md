@@ -1,10 +1,10 @@
 # BookClub
 
-Turing Mod 3 Niche Audience Project
+Visit the deployed [site](https://bookclubbuddy.herokuapp.com/)
 
 ## Overview
 
-BookClub is a React application built by [Cole Fiscus](https://github.com/colefiscus) from the [Turing](turing.io) School of Software and Design. The developer had less than one week to build a narrowly focused app while incorporating React, Router, Cypress, and Async JavaScript.
+BookClub is a React application built by [Cole Fiscus](https://github.com/colefiscus) for the [Turing](turing.io) School of Software and Design. The developer had less than one week to build a narrowly focused app while incorporating React, Router, Cypress, and async JavaScript.
 
 The end product is a collaborative book-selection tool. A user is greeted with a list of categories (e.g. "Paperback Nonfiction") which are taken from the [New York Times Books API](https://developer.nytimes.com/docs/books-product/1/overview).
 From here users will be added, users can select specific books to see more details, users will vote individually on which books they are interested in reading, and finally, after all users in a group have voted, matching books (or not) will be displayed to the users.
@@ -20,7 +20,7 @@ To add more features to this project, or to simply view the code in action...
 3. Install any necessary dependencies using `npm install`.
 4. Enter `npm start` to run the app on a local server or open the code in your text editor.  
 5. The app should open automatically, but you can also navigate to `http://localhost:3000/` to view the app as well.
-6. In order to use Cypress, enter `npm run cypress` from the project directory.
+6. In order to run the Cypress testing suite, enter `npm run cypress` from the project directory.
 
 ## Additional Features
 
@@ -60,7 +60,7 @@ To add more features to this project, or to simply view the code in action...
 ## Current Issues
 
 - Currently the app is not fully responsive - this is item one on the agenda.
-- There are two endpoints that return a response that did not allow access directly. I used a proxy server through Heroku when retrieving book details from the 'voting boards'. After not using the server for longer than 30 minutes goes to sleep so the first time waking it up takes about 10 seconds to load the book details. This only happens the first time.
+- The overall styling of the app is basic right now and is needing some upgrades.
 - Router is having difficulties when navigating between previews and the book details pages, especially when using the browser back button.
 - There should be some options for users to return to previous screens more easily in case of mistakes.
    
