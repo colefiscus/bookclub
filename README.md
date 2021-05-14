@@ -1,8 +1,8 @@
 # BookClub
 
-Visit the deployed [site](https://bookclubbuddy.herokuapp.com/)
-
 ## Overview
+
+Visit the deployed site [here](https://bookclubbuddy.herokuapp.com/).
 
 BookClub is a React application built by [Cole Fiscus](https://github.com/colefiscus) for the [Turing](turing.io) School of Software and Design. The developer had less than one week to build a narrowly focused app while incorporating React, Router, Cypress, and async JavaScript.
 
