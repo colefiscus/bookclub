@@ -8,7 +8,8 @@
 
 .categorySelection {
   width: 16%;
-  margin: 3%;
+  height: 400px;
+  margin: 1%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,12 +17,15 @@
 }
 
 .category {
-  font-size: larger;
+  font-size: x-large;
   font-family: 'Oswald';
   width: 90%;
   height: 17em;
   border: 3px solid blue;
-  border-radius: 60px 10px 0px 15px/25px 0px 45px 30px;
+  border-radius: 0px 25px 25px 0;
+  box-shadow: 5px 3px 8px 5px #ccc;
+  outline: 3px solid blue;
+  outline-offset: -10px;
   background-color: lightskyblue;
   padding: 5%;
   text-align: center;
@@ -34,7 +38,8 @@
 
 .categoryLink {
   width: 100%;
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   font-size: x-large;
 }
 
